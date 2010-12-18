@@ -79,10 +79,10 @@ $(document).ready(function(){
     }
     
     resetter.click(function(){
-        colors.headerHex = "#0000FF";
-        colors.mainHex = "#FFFFFF";
-        colors.sideHex = "#32CD32";
-        colors.bgHex = "#B0C4DE";
+        colors.headerHex = '#0000FF'; 
+        colors.mainHex = '#FFFFFF'; 
+        colors.sideHex = '#808080'; 
+        colors.bgHex = '#B0C4DE'; 
         
         set(colors);
         remove();
