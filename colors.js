@@ -72,6 +72,7 @@ $(function() {
         $("nav").css("background-color", n.sideHex);
 
         // In case the user highlighted nav li's via highlightNav.js
+        // nav li's CSS overrides nav's so it must be updated manually
         $("nav li").css("background-color", n.sideHex);
 
         $("body").css("background-color", n.bgHex);

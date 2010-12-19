@@ -7,7 +7,7 @@ $(function() {
      * highlightCol.
      */
     var navItemsWithAnchors = $("nav li").filter(":has(a)");
-    var highlightCol = "#FF6600";
+    var highlightCol = "#FF6600"; // orange
     // Make them be highlighted on mouseover
     navItemsWithAnchors.hover(
         function() { /*On mouseover*/
@@ -17,7 +17,7 @@ $(function() {
             $(this).css("background-color", highlightCol); 
         },
         function() { /*On mouseout*/
-            // Get a copy of the old background color 
+            // Get the value of the old background color 
             var sidebarCol = $("nav").css("background-color");
             // NOTE: I had to get the color in this function and
             // not elsewhere since the color might have changed
