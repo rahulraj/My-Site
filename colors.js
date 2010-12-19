@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(function() {
 
     var headerSelect = $("select[name=header]");
     var mainBodySelect = $("select[name=mainBody]");

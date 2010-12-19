@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(function() {
     /*
      * This script uses jQuery to add a highlighting visual
      * effect to the navigation sidebar. When the user's mouse hovers
