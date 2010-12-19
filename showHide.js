@@ -1,4 +1,12 @@
 $(function() {
     var articles = $("article");
-    articles.append("<a>Show</a> <a>Hide</a>");
+    var toggleVisibility = $("<a>Hide</a>");
+    
+    // add to the <article>
+    articles.append(toggleVisibility);
+    
+    toggleVisibility.click(function() {
+        alert("clicked");
+    });
+    
 });
