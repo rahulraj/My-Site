@@ -9,9 +9,13 @@ $(function() {
     toggleVisibility.click(function() {
         // find the content whose visibility will be toggled
         var parentArticle = $(this).parents("article");
+        // leave the title in the h3 tags showing so the user will know
+        // what will appear when they click Show
         var contentToChange = parentArticle.children().not("h3");
         // hide if shown, show if hidden
+        // jQuery's slideToggle method does the heavy lifting
         contentToChange.slideToggle();
+        // Change the button's value to be the function it will perform
         if ($(this).val() === "Hide") {
             $(this).val("Show");
         }
