@@ -7,11 +7,11 @@ $(function() {
     toggleVisibility.css("display", "inline");
    
     var hideArticle = function(contentToHide) {
-        contentToHide.fadeOut("fast");
+        contentToHide.slideUp();
     };
 
     var showArticle = function(contentToShow) {
-        contentToShow.fadeIn("fast");
+        contentToShow.slideDown();
     }
 
     toggleVisibility.click(function() {
