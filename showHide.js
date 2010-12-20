@@ -1,12 +1,34 @@
 $(function() {
     var articles = $("article");
-    var toggleVisibility = $("<a>Hide</a>");
-    
-    // add to the <article>
-    articles.append(toggleVisibility);
-    
+    var toggleVisibility = $("article input");
+
+    // toggleVisibility is hidden by default for those who don't have
+    // JavaScript enabled; make it appear
+    toggleVisibility.css("display", "inline");
+   
+    var hideArticle = function(clickedButton) {
+        // clickedButton is a jQuery object wrapping the hide button
+        // that was clicked
+        var parentArticle = clickedButton.parent("article");
+        var psInParent = parentArticle.children("p");
+        psInParent.fadeOut("fast");
+    };
+
+    var showArticle = function(clickedButton) {
+        var parentArticle = clickedButton.parent("article");
+        var psInParent = parentArticle.children("p");
+        psInParent.fadeIn("fast");
+    }
+
     toggleVisibility.click(function() {
-        alert("clicked");
+        // hide if shown, show if hidden
+        if ($(this).val() === "Hide") {
+            hideArticle($(this)); 
+            $(this).val("Show");
+        }
+        else {
+            showArticle($(this));
+            $(this).val("Hide");
+        }
     });
-    
 });

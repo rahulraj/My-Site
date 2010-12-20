@@ -1,0 +1,5 @@
+/* Stylesheet for elements that are associated with scripts */
+
+article input {
+    display:none;
+}
