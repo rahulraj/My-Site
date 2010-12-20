@@ -1,33 +1,30 @@
 $(function() {
-    var articles = $("article");
     var toggleVisibility = $("article input");
 
-    // toggleVisibility is hidden by default for those who don't have
-    // JavaScript enabled; make it appear
+    // toggleVisibility is hidden by default for users who don't have
+    // JavaScript enabled; this is to not confuse them by showing them
+    // a nonfunctional button. Make it appear now.
     toggleVisibility.css("display", "inline");
    
-    var hideArticle = function(clickedButton) {
-        // clickedButton is a jQuery object wrapping the hide button
-        // that was clicked
-        var parentArticle = clickedButton.parents("article");
-        var psInParent = parentArticle.children("p");
-        psInParent.fadeOut("fast");
+    var hideArticle = function(contentToHide) {
+        contentToHide.fadeOut("fast");
     };
 
-    var showArticle = function(clickedButton) {
-        var parentArticle = clickedButton.parents("article");
-        var psInParent = parentArticle.children("p");
-        psInParent.fadeIn("fast");
+    var showArticle = function(contentToShow) {
+        contentToShow.fadeIn("fast");
     }
 
     toggleVisibility.click(function() {
+        // find the content whose visibility will be toggled
+        var parentArticle = $(this).parents("article");
+        var contentToChange = parentArticle.children().not("h3");
         // hide if shown, show if hidden
         if ($(this).val() === "Hide") {
-            hideArticle($(this)); 
+            hideArticle(contentToChange); 
             $(this).val("Show");
         }
         else {
-            showArticle($(this));
+            showArticle(contentToChange);
             $(this).val("Hide");
         }
     });
