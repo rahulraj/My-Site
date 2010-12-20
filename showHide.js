@@ -9,13 +9,13 @@ $(function() {
     var hideArticle = function(clickedButton) {
         // clickedButton is a jQuery object wrapping the hide button
         // that was clicked
-        var parentArticle = clickedButton.parent("article");
+        var parentArticle = clickedButton.parents("article");
         var psInParent = parentArticle.children("p");
         psInParent.fadeOut("fast");
     };
 
     var showArticle = function(clickedButton) {
-        var parentArticle = clickedButton.parent("article");
+        var parentArticle = clickedButton.parents("article");
         var psInParent = parentArticle.children("p");
         psInParent.fadeIn("fast");
     }
