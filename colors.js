@@ -7,7 +7,7 @@ $(function() {
     var resetter = $("#resetButton");
 
     function ColorSet(headerHex, mainHex, sideHex, bgHex) {
-        // Constructor for an object that stores the hexcodes
+        // Constructor for an object that stores a set of the hexcodes
         // for a specified color scheme
         this.headerHex = headerHex;
         this.mainHex = mainHex;
@@ -43,14 +43,15 @@ $(function() {
                                      mainBodySelect.val(),
                                      sidebarSelect.val(),
                                      backgroundSelect.val());
-        $.cookie("colorCookie",JSON.stringify(newColors),{expires: 7});
+        $.cookie("colorCookie", JSON.stringify(newColors),{expires: 7});
     }
     
     function resetCookie(){
-        $.cookie("colorCookie",null);
+        $.cookie("colorCookie", null);
     }
     
-    function readCookie(){
+    function setColors(){
+        // reads colorCookie and sets the colors accordingly
         set(JSON.parse($.cookie("colorCookie")));
     }
     
@@ -83,5 +84,5 @@ $(function() {
         resetCookie();
     });
 
-    readCookie();
+    setColors();
 });
