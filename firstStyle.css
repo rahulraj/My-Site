@@ -37,7 +37,9 @@ div#mainText{
     padding:10px;
     width:60%;
     font-family:"Times New Roman", Georgia, serif;
-    border:1px solid black;
+    /*border:1px solid black;*/
+    border-radius: 10px;
+    -moz-border-radius: 10px;
     position:relative;
     top:10px;
     float:left;
@@ -45,12 +47,12 @@ div#mainText{
 img[src="mit_logo_shrunk.png"]{
     float:left;
 }
-img[src="gujaratiRestaurantCropped.jpg"]{
+img[src="rasmaller.jpg"]{
     display:block;
     margin-left:auto;
     margin-right:auto;
-    padding-top:5px;
-    padding-bottom:5px;
+    padding-top:15px;
+    padding-bottom:15px;
 }
 h1{
     position:relative;
@@ -76,7 +78,9 @@ nav{
     float:right;
     position:relative;
     top:10px;
-    border:1px solid black;
+    /*border:1px solid black;*/
+    border-radius: 10px;
+    -moz-border-radius: 10px;
     background-color:#808080; /* gray */
     width:30%;
     padding-top:5px;
