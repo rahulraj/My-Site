@@ -14,6 +14,11 @@ $(function() {
         this.sideHex = sideHex;
         this.bgHex = bgHex;
     }
+
+    function defaultColorSet() {
+        return new ColorSet('#0000FF', '#FFFFFF', '#808080',
+                            '#B0C4DE');
+    }
     
     headerSelect.change(function(){
         $("header").css("background-color", $(this).val());
@@ -56,8 +61,7 @@ $(function() {
     }
     
     function set(n){
-        var defaultColors = new ColorSet('#0000FF', '#FFFFFF', '#808080',
-                                         '#B0C4DE');
+        var defaultColors = defaultColorSet(); 
         n = $.extend(defaultColors,n);//remove null values just in case
 
         headerSelect.val(n.headerHex);
@@ -78,8 +82,7 @@ $(function() {
     }
     
     resetter.click(function(){
-        var resetColors = new ColorSet('#0000FF', '#FFFFFF', '#808080',
-                                       '#B0C4DE');
+        var resetColors = defaultColorSet();
         set(resetColors);
         resetCookie();
     });
