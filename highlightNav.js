@@ -12,8 +12,6 @@ $(function() {
     navItemsWithAnchors.hover(
         function() { /*On mouseover*/
             // Change to highlightCol
-            // Changes the background color of the li that is
-            // the parent of the anchor which is being moused over
             $(this).css("background-color", highlightCol); 
         },
         function() { /*On mouseout*/
