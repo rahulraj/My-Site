@@ -20,17 +20,17 @@ $(function() {
                             '#B0C4DE');
     }
     
-    headerSelect.change(function(){
+    headerSelect.change(function() {
         $("header").css("background-color", $(this).val());
         save();
     });
     
-    mainBodySelect.change(function(){
+    mainBodySelect.change(function() {
         $("#mainText").css("background-color", $(this).val());
         save();
     });
     
-    sidebarSelect.change(function(){
+    sidebarSelect.change(function() {
         $("nav").css("background-color", $(this).val());
         // In case the user highlighted nav li's via
         // highlightNav.js, change them too
@@ -38,12 +38,18 @@ $(function() {
         save();
     });
     
-    backgroundSelect.change(function(){
+    backgroundSelect.change(function() {
         $("body").css("background-color", $(this).val());
         save();
     });
 
-    function save(){
+    resetter.click(function() {
+        var resetColors = defaultColorSet();
+        set(resetColors);
+        resetCookie();
+    });
+
+    function save() {
         var newColors = new ColorSet(headerSelect.val(),
                                      mainBodySelect.val(),
                                      sidebarSelect.val(),
@@ -51,41 +57,37 @@ $(function() {
         $.cookie("colorCookie", JSON.stringify(newColors),{expires: 7});
     }
     
-    function resetCookie(){
+    function resetCookie() {
         $.cookie("colorCookie", null);
     }
     
-    function setColors(){
+    function setColorsFromCookie() {
         // reads colorCookie and sets the colors accordingly
         set(JSON.parse($.cookie("colorCookie")));
     }
     
-    function set(n){
+    function set(colSet) {
+        // sets the selects' names and the background colors as
+        // specified by colSet
         var defaultColors = defaultColorSet(); 
-        n = $.extend(defaultColors,n);//remove null values just in case
+        colSet = $.extend(defaultColors, colSet);//remove null values just in case
 
-        headerSelect.val(n.headerHex);
-        mainBodySelect.val(n.mainHex);
-        sidebarSelect.val(n.sideHex);
-        backgroundSelect.val(n.bgHex);
+        headerSelect.val(colSet.headerHex);
+        mainBodySelect.val(colSet.mainHex);
+        sidebarSelect.val(colSet.sideHex);
+        backgroundSelect.val(colSet.bgHex);
 
-        $("header").css("background-color", n.headerHex);
-        $("#mainText").css("background-color", n.mainHex);
-        $("nav").css("background-color", n.sideHex);
+        $("header").css("background-color", colSet.headerHex);
+        $("#mainText").css("background-color", colSet.mainHex);
+        $("nav").css("background-color", colSet.sideHex);
 
         // In case the user highlighted nav li's via highlightNav.js
         // nav li's CSS overrides nav's so it must be updated manually
-        $("nav li").css("background-color", n.sideHex);
+        $("nav li").css("background-color", colSet.sideHex);
 
-        $("body").css("background-color", n.bgHex);
+        $("body").css("background-color", colSet.bgHex);
         return true;
     }
-    
-    resetter.click(function(){
-        var resetColors = defaultColorSet();
-        set(resetColors);
-        resetCookie();
-    });
 
-    setColors();
+    setColorsFromCookie();
 });
