@@ -19,6 +19,14 @@ $(function() {
         return new ColorSet('#0000FF', '#FFFFFF', '#808080',
                             '#B0C4DE');
     }
+
+    function save() {
+        var newColors = new ColorSet(headerSelect.val(),
+                                     mainBodySelect.val(),
+                                     sidebarSelect.val(),
+                                     backgroundSelect.val());
+        $.cookie("colorCookie", JSON.stringify(newColors),{expires: 7});
+    }
     
     headerSelect.change(function() {
         $("header").css("background-color", $(this).val());
@@ -43,29 +51,6 @@ $(function() {
         save();
     });
 
-    resetter.click(function() {
-        var resetColors = defaultColorSet();
-        set(resetColors);
-        resetCookie();
-    });
-
-    function save() {
-        var newColors = new ColorSet(headerSelect.val(),
-                                     mainBodySelect.val(),
-                                     sidebarSelect.val(),
-                                     backgroundSelect.val());
-        $.cookie("colorCookie", JSON.stringify(newColors),{expires: 7});
-    }
-    
-    function resetCookie() {
-        $.cookie("colorCookie", null);
-    }
-    
-    function setColorsFromCookie() {
-        // reads colorCookie and sets the colors accordingly
-        set(JSON.parse($.cookie("colorCookie")));
-    }
-    
     function set(colSet) {
         // sets the selects' names and the background colors as
         // specified by colSet
@@ -89,5 +74,20 @@ $(function() {
         return true;
     }
 
+    function resetCookie() {
+        $.cookie("colorCookie", null);
+    }
+
+    resetter.click(function() {
+        var resetColors = defaultColorSet();
+        set(resetColors);
+        resetCookie();
+    });
+    
+    function setColorsFromCookie() {
+        // reads colorCookie and sets the colors accordingly
+        set(JSON.parse($.cookie("colorCookie")));
+    }
+    
     setColorsFromCookie();
 });
