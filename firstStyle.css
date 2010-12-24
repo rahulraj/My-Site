@@ -16,6 +16,7 @@ p {
 header{
     border-bottom:1px solid black;
     background-color:#0000FF; /*blue*/
+    /*background-color:#CC9933; /*light orange*/
 }
 div#wrap{
     min-height:100%;

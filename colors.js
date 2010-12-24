@@ -33,7 +33,7 @@ $(function() {
     sidebarSelect.change(function(){
         $("nav").css("background-color", $(this).val());
         // In case the user highlighted nav li's via
-        // highlightNav.js
+        // highlightNav.js, change them too
         $("nav li").css("background-color", $(this).val());
         save();
     });
@@ -51,11 +51,11 @@ $(function() {
         $.cookie("colorCookie",JSON.stringify(colors),{expires: 7});
     }
     
-    function remove(){
+    function resetCookie(){
         $.cookie("colorCookie",null);
     }
     
-    function read(){
+    function readCookie(){
         set(JSON.parse($.cookie("colorCookie")));
     }
     
@@ -86,8 +86,8 @@ $(function() {
         colors.bgHex = '#B0C4DE'; 
         
         set(colors);
-        remove();
+        resetCookie();
     });
 
-    read();
+    readCookie();
 });
