@@ -6,13 +6,6 @@ $(function() {
     var backgroundSelect = $("select[name=background]");
     var resetter = $("#resetButton");
 
-    var colors = {
-        'headerHex': '',
-        'mainHex': '',
-        'sideHex': '',
-        'bgHex': '' 
-    }
-    
     var defaultColors = {
         'headerHex': '#0000FF',
         'mainHex': '#FFFFFF',
@@ -44,11 +37,13 @@ $(function() {
     });
 
     function save(){
-        colors.headerHex = headerSelect.val();
-        colors.mainHex = mainBodySelect.val();
-        colors.sideHex = sidebarSelect.val();
-        colors.bgHex = backgroundSelect.val();
-        $.cookie("colorCookie",JSON.stringify(colors),{expires: 7});
+        var newColors = {
+            'headerHex' : headerSelect.val(),
+            'mainHex' : mainBodySelect.val(),
+            'sideHex' : sidebarSelect.val(),
+            'bgHex' : backgroundSelect.val()
+        }
+        $.cookie("colorCookie",JSON.stringify(newColors),{expires: 7});
     }
     
     function resetCookie(){
@@ -80,12 +75,14 @@ $(function() {
     }
     
     resetter.click(function(){
-        colors.headerHex = '#0000FF'; 
-        colors.mainHex = '#FFFFFF'; 
-        colors.sideHex = '#808080'; 
-        colors.bgHex = '#B0C4DE'; 
+        var resetColors = {
+            'headerHex' : '#0000FF',
+            'mainHex' : '#FFFFFF',
+            'sideHex' : '#808080',
+            'bgHex' : '#B0C4DE'
+        }
         
-        set(colors);
+        set(resetColors);
         resetCookie();
     });
 
