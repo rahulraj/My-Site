@@ -6,12 +6,17 @@ $(function() {
     var backgroundSelect = $("select[name=background]");
     var resetter = $("#resetButton");
 
-    var defaultColors = {
-        'headerHex': '#0000FF',
-        'mainHex': '#FFFFFF',
-        'sideHex': '#808080',
-        'bgHex': '#B0C4DE'  
+    function ColorSet(headerHex, mainHex, sideHex, bgHex) {
+        // Constructor for an object that stores the hexcodes
+        // for a specified color scheme
+        this.headerHex = headerHex;
+        this.mainHex = mainHex;
+        this.sideHex = sideHex;
+        this.bgHex = bgHex;
     }
+
+    var defaultColors = new ColorSet('#0000FF', '#FFFFFF', '#808080',
+                                     '#B0C4DE');
     
     headerSelect.change(function(){
         $("header").css("background-color", $(this).val());
@@ -37,12 +42,10 @@ $(function() {
     });
 
     function save(){
-        var newColors = {
-            'headerHex' : headerSelect.val(),
-            'mainHex' : mainBodySelect.val(),
-            'sideHex' : sidebarSelect.val(),
-            'bgHex' : backgroundSelect.val()
-        }
+        var newColors = new ColorSet(headerSelect.val(),
+                                     mainBodySelect.val(),
+                                     sidebarSelect.val(),
+                                     backgroundSelect.val());
         $.cookie("colorCookie",JSON.stringify(newColors),{expires: 7});
     }
     
@@ -75,13 +78,8 @@ $(function() {
     }
     
     resetter.click(function(){
-        var resetColors = {
-            'headerHex' : '#0000FF',
-            'mainHex' : '#FFFFFF',
-            'sideHex' : '#808080',
-            'bgHex' : '#B0C4DE'
-        }
-        
+        var resetColors = new ColorSet('#0000FF', '#FFFFFF', '#808080',
+                                       '#B0C4DE');
         set(resetColors);
         resetCookie();
     });
