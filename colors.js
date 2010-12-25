@@ -1,5 +1,8 @@
 $(function() {
 
+    // UI elements in colorScheme.html
+    // these vars will not select anything if we are in a
+    // different page
     var headerSelect = $("select[name=header]");
     var mainBodySelect = $("select[name=mainBody]");
     var sidebarSelect = $("select[name=sidebar]");
@@ -69,8 +72,7 @@ $(function() {
         // sets the selects' names and the background colors as
         // specified by colSet, animates if shouldAnimate is
         // true, else just changes the colors
-        var defaultColors = defaultColorSet(); 
-        colSet = $.extend(defaultColors, colSet);//remove null values just in case
+        colSet = $.extend(defaultColorSet(), colSet);//remove null values just in case
 
         headerSelect.val(colSet.headerHex);
         mainBodySelect.val(colSet.mainHex);
@@ -94,13 +96,16 @@ $(function() {
     }
 
     resetter.click(function() {
-        var resetColors = defaultColorSet();
-        set(resetColors, true);
+        set(defaultColorSet(), true);
         resetCookie();
     });
     
     function setColorsFromCookie() {
         // reads colorCookie and sets the colors accordingly
+        // does not animate the color change, as the page should
+        // load with the changed colors, and the user should not
+        // see the original ones (they have already seen an
+        // animation)
         set(JSON.parse($.cookie("colorCookie")), false);
     }
     
