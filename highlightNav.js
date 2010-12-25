@@ -28,7 +28,7 @@ $(function() {
             // Revert to it 
             var thisItem = $(this);
             thisItem.stop();
-            thisItej.animate({backgroundColor: sidebarCol}, 'fast');
+            thisItem.animate({backgroundColor: sidebarCol}, 'fast');
         }
     );
    
