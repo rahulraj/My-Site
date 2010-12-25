@@ -39,10 +39,9 @@ $(function() {
     });
     
     sidebarSelect.change(function() {
-        $("nav").css("background-color", $(this).val());
+        $("nav, nav li").css("background-color", $(this).val());
         // In case the user highlighted nav li's via
         // highlightNav.js, change them too
-        $("nav li").css("background-color", $(this).val());
         save();
     });
     
