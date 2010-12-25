@@ -20,6 +20,21 @@ $(function() {
                             '#B0C4DE');
     }
 
+    function changeColor(selector, color) {
+        // changes the backgroudn-color of the elements covered 
+        // by selector to color
+        $(selector).css("background-color", color);
+    }
+
+    function animateColor(selector, color) {
+        // like changeColor, but does the change with an
+        // animation, using jquery.colors.js
+        // we only animate the initial change of color when the
+        // user first picks the new color, all other changes of
+        // the css value are done instantly with changeColor
+        $(selector).animate({backgroundColor: color}, 'slow');
+    }
+
     function save() {
         var newColors = new ColorSet(headerSelect.val(),
                                      mainBodySelect.val(),
@@ -29,24 +44,24 @@ $(function() {
     }
     
     headerSelect.change(function() {
-        $("header").css("background-color", $(this).val());
+        animateColor("header", $(this).val());
         save();
     });
     
     mainBodySelect.change(function() {
-        $("#mainText").css("background-color", $(this).val());
+        animateColor("#mainText", $(this).val());
         save();
     });
     
     sidebarSelect.change(function() {
-        $("nav, nav li").css("background-color", $(this).val());
         // In case the user highlighted nav li's via
         // highlightNav.js, change them too
+        animateColor("nav, nav li", $(this).val());
         save();
     });
     
     backgroundSelect.change(function() {
-        $("body").css("background-color", $(this).val());
+        animateColor("body", $(this).val());
         save();
     });
 
@@ -61,7 +76,11 @@ $(function() {
         sidebarSelect.val(colSet.sideHex);
         backgroundSelect.val(colSet.bgHex);
 
-        $("header").css("background-color", colSet.headerHex);
+        changeColor("header", colSet.headerHex);
+        changeColor("#mainText", colSet.mainHex);
+        changeColor("nav, nav li", colSet.sideHex);
+        changeColor("body", colSet.bgHex);
+        /*$("header").css("background-color", colSet.headerHex);
         $("#mainText").css("background-color", colSet.mainHex);
         $("nav").css("background-color", colSet.sideHex);
 
@@ -69,7 +88,7 @@ $(function() {
         // nav li's CSS overrides nav's so it must be updated manually
         $("nav li").css("background-color", colSet.sideHex);
 
-        $("body").css("background-color", colSet.bgHex);
+        $("body").css("background-color", colSet.bgHex);*/
         return true;
     }
 
