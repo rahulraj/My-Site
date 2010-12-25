@@ -12,6 +12,6 @@ import os
 if __name__ == '__main__':
     cmd = "scp " + "*.html minified/*.css minified/*.js" \
           " rahulraj@linerva.mit.edu:" + \
-          "/afs/athena.mit.edu/user/r/a/rahulraj" 
+          "/afs/athena.mit.edu/user/r/a/rahulraj/www" 
     os.system("echo " + cmd)
     os.system(cmd)
