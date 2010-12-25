@@ -11,8 +11,12 @@ $(function() {
     // Make them be highlighted on mouseover
     navItemsWithAnchors.hover(
         function() { /*On mouseover*/
-            // Change to highlightCol
-            $(this).css("background-color", highlightCol); 
+            // Change to highlightCol, using animate for a
+            // fade-in effect, with help from the color plugin
+            // to jQuery
+            var thisItem = $(this); // cache $(this)
+            thisItem.stop(); // prevent repeated fadeins/outs from queueing
+            thisItem.animate({backgroundColor: highlightCol}, 'fast');
         },
         function() { /*On mouseout*/
             // Get the value of the old background color 
@@ -22,7 +26,9 @@ $(function() {
             // since the page loaded if the user changes it
             // using colors.js
             // Revert to it 
-            $(this).css("background-color", sidebarCol);
+            var thisItem = $(this);
+            thisItem.stop();
+            thisItej.animate({backgroundColor: sidebarCol}, 'fast');
         }
     );
    
