@@ -65,9 +65,10 @@ $(function() {
         save();
     });
 
-    function set(colSet) {
+    function set(colSet, shouldAnimate) {
         // sets the selects' names and the background colors as
-        // specified by colSet
+        // specified by colSet, animates if shouldAnimate is
+        // true, else just changes the colors
         var defaultColors = defaultColorSet(); 
         colSet = $.extend(defaultColors, colSet);//remove null values just in case
 
@@ -76,19 +77,15 @@ $(function() {
         sidebarSelect.val(colSet.sideHex);
         backgroundSelect.val(colSet.bgHex);
 
-        changeColor("header", colSet.headerHex);
-        changeColor("#mainText", colSet.mainHex);
-        changeColor("nav, nav li", colSet.sideHex);
-        changeColor("body", colSet.bgHex);
-        /*$("header").css("background-color", colSet.headerHex);
-        $("#mainText").css("background-color", colSet.mainHex);
-        $("nav").css("background-color", colSet.sideHex);
+        var colorFun = changeColor;
+        if (shouldAnimate) {
+            colorFun = animateColor;
+        }
 
-        // In case the user highlighted nav li's via highlightNav.js
-        // nav li's CSS overrides nav's so it must be updated manually
-        $("nav li").css("background-color", colSet.sideHex);
-
-        $("body").css("background-color", colSet.bgHex);*/
+        colorFun("header", colSet.headerHex);
+        colorFun("#mainText", colSet.mainHex);
+        colorFun("nav, nav li", colSet.sideHex);
+        colorFun("body", colSet.bgHex);
         return true;
     }
 
@@ -98,13 +95,13 @@ $(function() {
 
     resetter.click(function() {
         var resetColors = defaultColorSet();
-        set(resetColors);
+        set(resetColors, true);
         resetCookie();
     });
     
     function setColorsFromCookie() {
         // reads colorCookie and sets the colors accordingly
-        set(JSON.parse($.cookie("colorCookie")));
+        set(JSON.parse($.cookie("colorCookie")), false);
     }
     
     setColorsFromCookie();
