@@ -45,27 +45,29 @@ $(function() {
                                      backgroundSelect.val());
         $.cookie("colorCookie", JSON.stringify(newColors),{expires: 7});
     }
-    
-    headerSelect.change(function() {
-        animateColor("header", $(this).val());
+
+    function selectChangeEvent(selector, color)
+    {
+        animateColor(selector, color);
         save();
+    }
+
+    headerSelect.change(function() {
+        selectChangeEvent("header", $(this).val());
     });
     
     mainBodySelect.change(function() {
-        animateColor("#mainText", $(this).val());
-        save();
+        selectChangeEvent("#mainText", $(this).val());
     });
     
     sidebarSelect.change(function() {
         // In case the user highlighted nav li's via
         // highlightNav.js, change them too
-        animateColor("nav, nav li", $(this).val());
-        save();
+        selectChangeEvent("nav, nav li", $(this).val());
     });
     
     backgroundSelect.change(function() {
-        animateColor("body", $(this).val());
-        save();
+        selectChangeEvent("body", $(this).val());
     });
 
     function set(colSet, shouldAnimate) {
