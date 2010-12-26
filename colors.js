@@ -115,5 +115,6 @@ $(function() {
         set(JSON.parse($.cookie("color")), false);
     }
     
+    // only action when the document loads is to
     setColorsFromCookie();
 });
