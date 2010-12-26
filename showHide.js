@@ -1,5 +1,5 @@
 $(function() {
-    var toggleVisibility = $("article input");
+    var toggleVisibility = $("article").find("input");
 
     // toggleVisibility is hidden by default for users who don't have
     // JavaScript enabled; this is to not confuse them by showing them

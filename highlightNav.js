@@ -6,7 +6,7 @@ $(function() {
      * link is part has its background-color highlighted with
      * highlightCol.
      */
-    var navItemsWithAnchors = $("nav li").filter(":has(a)");
+    var navItemsWithAnchors = $("nav").find("li").filter(":has(a)");
     var highlightCol = "#FF6600"; // orange
     // Make them be highlighted on mouseover
     navItemsWithAnchors.hover(
