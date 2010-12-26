@@ -10,9 +10,7 @@ html, body{
     padding:0;
 }
 header{
-    /*border-bottom:1px solid black;*/
     background-color:#0000FF; /*blue*/
-    /*background-color:#CC9933; /*light orange*/
     box-shadow: 0px 0px 5px #888;
     -moz-box-shadow: 0px 0px 5px #888;
     -webkit-box-shadow: 0px 0px 5px #888;
@@ -39,7 +37,6 @@ div#mainText{
     padding:10px;
     width:60%;
     font-family:"Times New Roman", Georgia, serif;
-    /*border:1px solid black;*/
     border-radius: 10px;
     -moz-border-radius: 10px;
     position:relative;
@@ -90,7 +87,6 @@ nav{
     float:right;
     position:relative;
     top:10px;
-    /*border:1px solid black;*/
     border-radius: 10px;
     -moz-border-radius: 10px;
     background-color:#808080; /* gray */
