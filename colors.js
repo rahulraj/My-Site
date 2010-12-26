@@ -43,11 +43,15 @@ $(function() {
                                      mainBodySelect.val(),
                                      sidebarSelect.val(),
                                      backgroundSelect.val());
-        $.cookie("colorCookie", JSON.stringify(newColors),{expires: 7});
+        $.cookie("color", JSON.stringify(newColors),{expires: 7});
     }
 
     function selectChangeEvent(selector, color)
     {
+        // event that is called when one of the selects changes. 
+        // The elements specified by selector animate a color
+        // change to color, and the cookie is updated
+        // accordingly
         animateColor(selector, color);
         save();
     }
@@ -94,7 +98,7 @@ $(function() {
     }
 
     function resetCookie() {
-        $.cookie("colorCookie", null);
+        $.cookie("color", null);
     }
 
     resetter.click(function() {
@@ -103,12 +107,12 @@ $(function() {
     });
     
     function setColorsFromCookie() {
-        // reads colorCookie and sets the colors accordingly
+        // reads color and sets the colors accordingly
         // does not animate the color change, as the page should
         // load with the changed colors, and the user should not
         // see the original ones (they have already seen an
         // animation)
-        set(JSON.parse($.cookie("colorCookie")), false);
+        set(JSON.parse($.cookie("color")), false);
     }
     
     setColorsFromCookie();
