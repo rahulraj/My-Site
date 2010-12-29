@@ -20,6 +20,15 @@ header{
     -webkit-box-shadow: 0px 0px 5px #888;
     padding-bottom:3px;
 }
+h1{
+    position:relative;
+    left:24%;
+    display:inline;
+    background-color:#FFCC00;
+    padding-bottom:3px;
+    padding-left:5px;
+    padding-right:5px;
+}
 div#wrap{
     min-height:100%;
     margin:0 auto;
@@ -61,17 +70,9 @@ img[src="rasmaller.jpg"]{
     padding-top:15px;
     padding-bottom:15px;
 }
-h1{
-    position:relative;
-    left:24%;
-    display:inline;
-    background-color:#1E90FF;
-}
 h1, h2{
     font-family:Arial, Verdana, sans-serif;
     text-align:center;
-}
-h2{
     text-shadow:2px 2px 2px #ccc;
 }
 h3{
