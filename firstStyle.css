@@ -9,11 +9,16 @@ html, body{
     margin:0;
     padding:0;
 }
+/* HTML 5 elements should be block-level, "help" older browsers */
+header, nav, article, footer, address {
+    display:block;
+}
 header{
-    background-color:#0000FF; /*blue*/
+    background-color:#0099FF /*blue*/
     box-shadow: 0px 0px 5px #888;
     -moz-box-shadow: 0px 0px 5px #888;
     -webkit-box-shadow: 0px 0px 5px #888;
+    padding-bottom:3px;
 }
 div#wrap{
     min-height:100%;

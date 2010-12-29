@@ -19,7 +19,7 @@ $(function() {
     }
 
     function defaultColorSet() {
-        return new ColorSet('#0000FF', '#FFFFFF', '#808080',
+        return new ColorSet('#0099FF', '#FFFFFF', '#808080',
                             '#B0C4DE');
     }
 
