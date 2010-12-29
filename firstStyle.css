@@ -63,7 +63,9 @@ img[src="rasmaller.jpg"]{
 }
 h1{
     position:relative;
-    right:9%;
+    left:24%;
+    display:inline;
+    background-color:#1E90FF;
 }
 h1, h2{
     font-family:Arial, Verdana, sans-serif;
