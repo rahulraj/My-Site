@@ -26,7 +26,7 @@ $(function() {
     }
 
     function changeColor(selector, color) {
-        // changes the backgroudn-color of the elements covered 
+        // changes the background-color of the elements covered 
         // by selector to color
         $(selector).css("background-color", color);
     }
