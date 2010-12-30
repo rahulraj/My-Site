@@ -4,10 +4,10 @@ $(function() {
     // these vars will not select anything if we are in a
     // different page
     var headerSelect = $("select[name=header]");
+    var titleSelect = $("select[name=title]");
     var mainBodySelect = $("select[name=mainBody]");
     var sidebarSelect = $("select[name=sidebar]");
     var backgroundSelect = $("select[name=background]");
-    var titleSelect = $("select[name=title]");
     var resetter = $("#resetButton");
 
     function ColorSet(headerHex, titleHex, mainHex, sideHex, bgHex) {
@@ -65,7 +65,7 @@ $(function() {
     
     titleSelect.change(function() {
         selectChangeEvent("h1", $(this).val());
-    };
+    });
 
     mainBodySelect.change(function() {
         selectChangeEvent("#mainText", $(this).val());
