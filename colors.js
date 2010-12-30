@@ -7,20 +7,22 @@ $(function() {
     var mainBodySelect = $("select[name=mainBody]");
     var sidebarSelect = $("select[name=sidebar]");
     var backgroundSelect = $("select[name=background]");
+    var titleSelect = $("select[name=title]");
     var resetter = $("#resetButton");
 
-    function ColorSet(headerHex, mainHex, sideHex, bgHex) {
+    function ColorSet(headerHex, titleHex, mainHex, sideHex, bgHex) {
         // Constructor for an object that stores a set of the hexcodes
         // for a specified color scheme
         this.headerHex = headerHex;
+        this.titleHex = titleHex;
         this.mainHex = mainHex;
         this.sideHex = sideHex;
         this.bgHex = bgHex;
     }
 
     function defaultColorSet() {
-        return new ColorSet('#0099FF', '#FFFFFF', '#808080',
-                            '#B0C4DE');
+        return new ColorSet('#0099FF', '#FFCC00', '#FFFFFF',
+                            '#808080', '#B0C4DE');
     }
 
     function changeColor(selector, color) {
@@ -40,6 +42,7 @@ $(function() {
 
     function save() {
         var newColors = new ColorSet(headerSelect.val(),
+                                     titleSelect.val(),
                                      mainBodySelect.val(),
                                      sidebarSelect.val(),
                                      backgroundSelect.val());
@@ -60,6 +63,10 @@ $(function() {
         selectChangeEvent("header", $(this).val());
     });
     
+    titleSelect.change(function() {
+        selectChangeEvent("h1", $(this).val());
+    };
+
     mainBodySelect.change(function() {
         selectChangeEvent("#mainText", $(this).val());
     });
@@ -79,8 +86,9 @@ $(function() {
         // specified by colSet, animates if shouldAnimate is
         // true, else just changes the colors
         colSet = $.extend(defaultColorSet(), colSet);//remove null values just in case
-
+        
         headerSelect.val(colSet.headerHex);
+        titleSelect.val(colSet.titleHex);
         mainBodySelect.val(colSet.mainHex);
         sidebarSelect.val(colSet.sideHex);
         backgroundSelect.val(colSet.bgHex);
@@ -91,6 +99,7 @@ $(function() {
         }
 
         colorFun("header", colSet.headerHex);
+        colorFun("h1", colSet.titleHex);
         colorFun("#mainText", colSet.mainHex);
         colorFun("nav, nav li", colSet.sideHex);
         colorFun("body", colSet.bgHex);
