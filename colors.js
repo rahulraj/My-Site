@@ -15,6 +15,8 @@ $(function() {
     var backgroundSelect = $("select[name=background]");
     var resetter = $("#resetButton");
 
+    setColorsFromCookie();
+
     function ColorSet(headerHex, titleHex, mainHex, sideHex, bgHex) {
         // Constructor for an object that stores a set of the hexcodes
         // for a specified color scheme
@@ -128,7 +130,4 @@ $(function() {
         // animation)
         set(JSON.parse($.cookie("color")), false);
     }
-    
-    // only action when the document loads is to
-    setColorsFromCookie();
 });

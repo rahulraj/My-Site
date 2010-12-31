@@ -1,0 +1,6 @@
+This repository holds the source code for my website at
+http://web.mit.edu/rahulraj/www/index.html
+
+The JavaScript and CSS are minified before being pushed to the production
+server, but unminified versions can be found in this repository so
+interested parties can see it.
