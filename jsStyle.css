@@ -3,3 +3,6 @@
 article input {
     display:none;
 }
+li a[href="colorScheme.html"] {
+    display:none;
+}

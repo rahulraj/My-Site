@@ -1,5 +1,10 @@
 $(function() {
 
+    // The link to colorScheme.js is hidden by default
+    // to not confuse users who don't have JavaScript
+    // enabled. Make it visible now
+    $('li a[href="colorScheme.html"]').css("display", "inline");
+
     // UI elements in colorScheme.html
     // these vars will not select anything if we are in a
     // different page
