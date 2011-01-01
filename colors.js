@@ -21,8 +21,6 @@ $(function() {
         selectOptions[i] = $(selected).val();
     });
 
-    setColorsFromCookie();
-
     function ColorSet(headerHex, titleHex, mainHex, sideHex, bgHex) {
         // Constructor for an object that stores a set of the hexcodes
         // for a specified color scheme
@@ -127,11 +125,12 @@ $(function() {
         set(defaultColorSet(), true);
         resetCookie();
     });
+    
+    function randomNum(maxVal) {
+        return Math.floor(Math.random() * maxVal);
+    }
 
-    $("#randomButton").click(function() {
-        function randomNum(maxVal) {
-            return Math.floor(Math.random() * maxVal);
-        }
+    $("#listRandom").click(function() {
         var randomColors = []; 
         var numOptions = selectOptions.length;
         for (var i = 0; i < numOptions; i++) {
@@ -143,13 +142,44 @@ $(function() {
         set(randCols, true);
         save();
     });
+
+    $("#expRandom").click(function() {
+        function decimalToColorHex(num) {
+            var rawHex = num.toString(16);
+            // pad it with leading 0's if needed
+            while (rawHex.length < 6) {
+                rawHex = "0" + rawHex;
+            }
+            rawHex = rawHex.toUpperCase();
+            return "#" + rawHex;
+        }
+        // FFFFFF in decimal is:
+        var maxVal = 16777215;
+        var reallyRands = [];
+        for (var i = 0; i < 5; i++) {
+            reallyRands[i] =  decimalToColorHex(randomNum(maxVal));
+        }
+        var reallyRandCols = new ColorSet(reallyRands[0],
+                                          reallyRands[1],
+                                          reallyRands[2],
+                                          reallyRands[3],
+                                          reallyRands[4]);
+        set(reallyRandCols, true);
+
+        headerSelect.val("experimental");
+
+        save();
+    });
     
     function setColorsFromCookie() {
         // reads color and sets the colors accordingly
-        // does not animate the color change, as the page should
+        // does NOT animate the color change, as the page should
         // load with the changed colors, and the user should not
         // see the original ones (they have already seen an
         // animation)
         set(JSON.parse($.cookie("color")), false);
     }
+
+    setColorsFromCookie();
+
 });
