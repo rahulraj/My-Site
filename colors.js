@@ -135,7 +135,7 @@ $(function() {
             return Math.floor(Math.random() * maxVal);
         }
         var randomColors = []; 
-        numOptions = selectOptions.length;
+        var numOptions = selectOptions.length;
         for (var i = 0; i < numOptions; i++) {
             randomColors[i] = selectOptions[randomNum(numOptions)];
         }
