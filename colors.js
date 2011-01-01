@@ -143,6 +143,7 @@ $(function() {
                                     randomColors[2], randomColors[3],
                                     randomColors[4]);
         set(randCols, true);
+        save();
     });
     
     function setColorsFromCookie() {
