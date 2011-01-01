@@ -144,20 +144,27 @@ $(function() {
     });
 
     $("#expRandom").click(function() {
-        function decimalToColorHex(num) {
-            var rawHex = num.toString(16);
+
+        function randRGBVal() {
+            // FF in hex:
+            var maxVal = 255;
+            var colHex = randomNum(maxVal).toString(16); 
             // pad it with leading 0's if needed
-            while (rawHex.length < 6) {
-                rawHex = "0" + rawHex;
+            while (colHex.length < 2) {
+                colHex = "0" + colHex;
             }
-            rawHex = rawHex.toUpperCase();
-            return "#" + rawHex;
+            return colHex;
         }
-        // FFFFFF in decimal is:
-        var maxVal = 16777215;
+
+        function getColorHex() {
+            var red = randRGBVal();
+            var green = randRGBVal();
+            var blue = randRGBVal();
+            return "#" + red + green + blue;
+        }
         var reallyRands = [];
         for (var i = 0; i < 5; i++) {
-            reallyRands[i] =  decimalToColorHex(randomNum(maxVal));
+            reallyRands[i] =  getColorHex();
         }
         var reallyRandCols = new ColorSet(reallyRands[0],
                                           reallyRands[1],
@@ -165,8 +172,6 @@ $(function() {
                                           reallyRands[3],
                                           reallyRands[4]);
         set(reallyRandCols, true);
-
-        headerSelect.val("experimental");
 
         save();
     });
