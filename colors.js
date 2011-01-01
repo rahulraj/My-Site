@@ -8,11 +8,11 @@ $(function() {
     // UI elements in colorScheme.html
     // these vars will not select anything if we are in a
     // different page
-    var headerSelect = $("select[name=header]");
-    var titleSelect = $("select[name=title]");
-    var mainBodySelect = $("select[name=mainBody]");
-    var sidebarSelect = $("select[name=sidebar]");
-    var backgroundSelect = $("select[name=background]");
+    var headerSelect = $("#headerSelect");
+    var titleSelect = $("#titleSelect");
+    var mainBodySelect = $("#mainBodySelect");
+    var sidebarSelect = $("#sidebarSelect");
+    var backgroundSelect = $("#backgroundSelect");
     var resetter = $("#resetButton");
 
     setColorsFromCookie();
