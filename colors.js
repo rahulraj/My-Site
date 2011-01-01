@@ -13,7 +13,6 @@ $(function() {
     var mainBodySelect = $("#mainBodySelect");
     var sidebarSelect = $("#sidebarSelect");
     var backgroundSelect = $("#backgroundSelect");
-    var resetter = $("#resetButton");
 
     // read the options for the selects into an array to use for
     // the random color button
@@ -21,7 +20,6 @@ $(function() {
     $('#headerSelect > option').each(function(i, selected) {
         selectOptions[i] = $(selected).val();
     });
-    var randomizer = $("#randomButton");
 
     setColorsFromCookie();
 
@@ -125,12 +123,12 @@ $(function() {
         $.cookie("color", null);
     }
 
-    resetter.click(function() {
+    $("#resetButton").click(function() {
         set(defaultColorSet(), true);
         resetCookie();
     });
 
-    randomizer.click(function() {
+    $("#randomButton").click(function() {
         function randomNum(maxVal) {
             return Math.floor(Math.random() * maxVal);
         }
