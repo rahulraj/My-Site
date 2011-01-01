@@ -15,6 +15,14 @@ $(function() {
     var backgroundSelect = $("#backgroundSelect");
     var resetter = $("#resetButton");
 
+    // read the options for the selects into an array to use for
+    // the random color button
+    var selectOptions = [];
+    $('#headerSelect > option').each(function(i, selected) {
+        selectOptions[i] = $(selected).val();
+    });
+    var randomizer = $("#randomButton");
+
     setColorsFromCookie();
 
     function ColorSet(headerHex, titleHex, mainHex, sideHex, bgHex) {
@@ -120,6 +128,21 @@ $(function() {
     resetter.click(function() {
         set(defaultColorSet(), true);
         resetCookie();
+    });
+
+    randomizer.click(function() {
+        function randomNum(maxVal) {
+            return Math.floor(Math.random() * maxVal);
+        }
+        var randomColors = []; 
+        numOptions = selectOptions.length;
+        for (var i = 0; i < numOptions; i++) {
+            randomColors[i] = selectOptions[randomNum(numOptions)];
+        }
+        var randCols = new ColorSet(randomColors[0], randomColors[1],
+                                    randomColors[2], randomColors[3],
+                                    randomColors[4]);
+        set(randCols, true);
     });
     
     function setColorsFromCookie() {
