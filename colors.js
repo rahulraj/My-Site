@@ -104,10 +104,7 @@ $(function() {
         sidebarSelect.val(colSet.sideHex);
         backgroundSelect.val(colSet.bgHex);
 
-        var colorFun = changeColor;
-        if (shouldAnimate) {
-            colorFun = animateColor;
-        }
+	var colorFun = shouldAnimate ? animateColor : changeColor;
 
         colorFun("header", colSet.headerHex);
         colorFun("h1", colSet.titleHex);
