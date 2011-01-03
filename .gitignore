@@ -1,5 +1,6 @@
 *.jpg
 *.png
+*.pyc
 minified/*
 disability/*
 advanced/*
