@@ -6,3 +6,6 @@ article input {
 li a[href="colorScheme.html"] {
     display:none;
 }
+#resetButton {
+    text-align:center;
+}
