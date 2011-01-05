@@ -21,6 +21,14 @@ $(function() {
         selectOptions[i] = $(selected).val();
     });
 
+    // It is possible that the user used the experimental random
+    // colors button, then switched to a different page, then
+    // returned to this one. For least surprise, it is necessary
+    // to add that color to its drop-down menu
+    //if (!($("header").css() in selectOptions)) {
+	//headerSelect.
+    
+
     function ColorSet(headerHex, titleHex, mainHex, sideHex, bgHex) {
         // Constructor for an object that stores a set of the hexcodes
         // for a specified color scheme
@@ -159,17 +167,18 @@ $(function() {
             var blue = randRGBVal();
             return "#" + red + green + blue;
         }
-        var reallyRands = [];
-        for (var i = 0; i < 5; i++) {
-            reallyRands[i] =  getColorHex();
-        }
-        var reallyRandCols = new ColorSet(reallyRands[0],
-                                          reallyRands[1],
-                                          reallyRands[2],
-                                          reallyRands[3],
-                                          reallyRands[4]);
-        set(reallyRandCols, true);
-
+	var newCols = [];
+	$("select").each(function(index) {
+	    var col = getColorHex().toUpperCase();
+	    var self = $(this);
+	    self.append('<option value=' + col +
+			   '>' + col + '</option>');
+	    self.val(col);
+	    newCols[index] = col;
+	});
+	set(new ColorSet(newCols[0], newCols[1],
+			 newCols[2], newCols[3],
+			 newCols[4]), true);
         save();
     });
     
