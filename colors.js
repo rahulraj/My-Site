@@ -21,14 +21,6 @@ $(function() {
         selectOptions[i] = $(selected).val();
     });
 
-    // It is possible that the user used the experimental random
-    // colors button, then switched to a different page, then
-    // returned to this one. For least surprise, it is necessary
-    // to add that color to its drop-down menu
-    //if (!($("header").css() in selectOptions)) {
-	//headerSelect.
-    
-
     function ColorSet(headerHex, titleHex, mainHex, sideHex, bgHex) {
         // Constructor for an object that stores a set of the hexcodes
         // for a specified color scheme
