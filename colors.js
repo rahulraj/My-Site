@@ -11,7 +11,7 @@ $(function() {
     var headerSelect = $("#headerSelect");
     var titleSelect = $("#titleSelect");
     var mainBodySelect = $("#mainBodySelect");
-    var sidebarSelect = $("#sidebarSelect");
+    var navSelect = $("#sidebarSelect");
     var backgroundSelect = $("#backgroundSelect");
 
     // read the options for the selects into an array to use for
@@ -55,7 +55,7 @@ $(function() {
         var newColors = new ColorSet(headerSelect.val(),
                                      titleSelect.val(),
                                      mainBodySelect.val(),
-                                     sidebarSelect.val(),
+                                     navSelect.val(),
                                      backgroundSelect.val());
         $.cookie("color", JSON.stringify(newColors),{expires: 7});
     }
@@ -82,7 +82,7 @@ $(function() {
         selectChangeEvent("#mainText", $(this).val());
     });
     
-    sidebarSelect.change(function() {
+    navSelect.change(function() {
         // In case the user highlighted nav li's via
         // highlightNav.js, change them too
         selectChangeEvent("nav, nav li", $(this).val());
@@ -101,7 +101,7 @@ $(function() {
         headerSelect.val(colSet.headerHex);
         titleSelect.val(colSet.titleHex);
         mainBodySelect.val(colSet.mainHex);
-        sidebarSelect.val(colSet.sideHex);
+        navSelect.val(colSet.sideHex);
         backgroundSelect.val(colSet.bgHex);
 
 	var colorFun = shouldAnimate ? animateColor : changeColor;
