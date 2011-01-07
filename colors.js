@@ -97,14 +97,13 @@ $(function() {
         // specified by colSet, animates if shouldAnimate is
         // true, else just changes the colors
         colSet = $.extend(defaultColorSet(), colSet);//remove null values just in case
-        
         headerSelect.val(colSet.headerHex);
         titleSelect.val(colSet.titleHex);
         mainBodySelect.val(colSet.mainHex);
         navSelect.val(colSet.sideHex);
         backgroundSelect.val(colSet.bgHex);
 
-	var colorFun = shouldAnimate ? animateColor : changeColor;
+        var colorFun = shouldAnimate ? animateColor : changeColor;
 
         colorFun("header", colSet.headerHex);
         colorFun("h1", colSet.titleHex);
@@ -159,12 +158,14 @@ $(function() {
             var blue = randRGBVal();
             return "#" + red + green + blue;
         }
-	var newCols = [];
-	$("select").each(function(index) {
-	    var col = getColorHex().toUpperCase();
-	    var self = $(this);
-	    self.append('<option value=' + col +
-			   '>' + col + '</option>');
+        var newCols = [];
+        $("select").each(function(index) {
+            var col = getColorHex().toUpperCase();
+            var self = $(this);
+	    var newColOption = $("<option>", {
+	                         value : col,
+	                         html : col});
+	    self.append(newColOption);
 	    self.val(col);
 	    newCols[index] = col;
 	});
