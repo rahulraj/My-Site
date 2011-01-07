@@ -71,25 +71,25 @@ $(function() {
     }
 
     headerSelect.change(function() {
-        selectChangeEvent("header", $(this).val());
+        selectChangeEvent("header", headerSelect.val());
     });
     
     titleSelect.change(function() {
-        selectChangeEvent("h1", $(this).val());
+        selectChangeEvent("h1", titleSelect.val());
     });
 
     mainBodySelect.change(function() {
-        selectChangeEvent("#mainText", $(this).val());
+        selectChangeEvent("#mainText", mainBodySelect.val());
     });
     
     navSelect.change(function() {
         // In case the user highlighted nav li's via
         // highlightNav.js, change them too
-        selectChangeEvent("nav, nav li", $(this).val());
+        selectChangeEvent("nav, nav li", navSelect.val());
     });
     
     backgroundSelect.change(function() {
-        selectChangeEvent("body", $(this).val());
+        selectChangeEvent("body", backgroundSelect.val());
     });
 
     function set(colSet, shouldAnimate) {
