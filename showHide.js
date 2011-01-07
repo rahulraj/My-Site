@@ -3,7 +3,7 @@ $(function() {
 
     // toggleVisibility is hidden by default for users who don't have
     // JavaScript enabled; this is to not confuse them by showing them
-    // a nonfunctional button. Make it appear now.
+    // a nonfunctional link. Make it appear now.
     toggleVisibility.css("display", "inline");
 
     toggleVisibility.click(function() {
@@ -16,7 +16,7 @@ $(function() {
         // jQuery's slideToggle method does the heavy lifting
         contentToChange.slideToggle();
         // Change the button's value to be the function it will perform
-	var newVal = $(this).val === "Hide" ? "Show" : "Hide";
-	$(this).val(newVal);
+	var newVal = $(this).html() === "Hide" ? "Show" : "Hide";
+	$(this).html(newVal);
     });
 });
