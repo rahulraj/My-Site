@@ -15,7 +15,7 @@ $(function() {
         // hide if shown, show if hidden
         // jQuery's slideToggle method does the heavy lifting
         contentToChange.slideToggle();
-        // Change the button's value to be the function it will perform
+        // Change the anchor's inner HTML value to be the function it will perform
 	var newVal = $(this).html() === "Hide" ? "Show" : "Hide";
 	$(this).html(newVal);
     });
