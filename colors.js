@@ -11,7 +11,7 @@ $(function() {
     var headerSelect = $("#headerSelect");
     var titleSelect = $("#titleSelect");
     var mainBodySelect = $("#mainBodySelect");
-    var navSelect = $("#sidebarSelect");
+    var navSelect = $("#navSelect");
     var backgroundSelect = $("#backgroundSelect");
 
     // read the options for the selects into an array to use for
