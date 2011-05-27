@@ -1,5 +1,4 @@
 $(function() {
-
     // The link to colorScheme.js is hidden by default
     // to not confuse users who don't have JavaScript
     // enabled. Make it visible now
