@@ -1,3 +1,27 @@
+/* Fonts */
+/* TitilliumText, a serif font, licensed under the SIL Open Font Licence 1.1 */
+@font-face {
+    font-family: 'TitilliumText22LMedium';
+    src: url('fonts/TitilliumText/TitilliumText22L004-webfont.eot');
+    src: url('fonts/TitilliumText/TitilliumText22L004-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/TitilliumText/TitilliumText22L004-webfont.woff') format('woff'),
+         url('fonts/TitilliumText/TitilliumText22L004-webfont.ttf') format('truetype'),
+         url('fonts/TitilliumText/TitilliumText22L004-webfont.svg#TitilliumText22LMedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+/* Nobile, a sans-seif font, also licensed under the SIL Open Font Licence 1.1 */
+@font-face {
+    font-family: 'NobileRegular';
+    src: url('fonts/Nobile/nobile-webfont.eot');
+    src: url('fonts/Nobile/nobile-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Nobile/nobile-webfont.woff') format('woff'),
+         url('fonts/Nobile/nobile-webfont.ttf') format('truetype'),
+         url('fonts/Nobile/nobile-webfont.svg#NobileRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
 * {
     margin:0;
     padding:0;
@@ -51,7 +75,7 @@ div#mainText {
     margin-left:21px;
     padding:10px;
     width:60%;
-    font-family:"Times New Roman", Georgia, serif;
+    font-family:"TitilliumText22LMedium", "Times New Roman", Georgia, serif;
     border-radius: 10px;
     -moz-border-radius: 10px;
     position:relative;
@@ -73,16 +97,18 @@ img[src="rasmaller.jpg"] {
     padding-bottom:15px;
 }
 h1, h2 {
-    font-family:Arial, Verdana, sans-serif;
+    font-family:"NobileRegular", Arial, Verdana, sans-serif;
+    font-size:190%;
     text-align:center;
     text-shadow:2px 2px 2px #ccc;
 }
 h2 {
+    font-size:140%;
     padding-bottom:5px;
 }
 h3 {
-    font-family:Arial, Verdana, sans-serif;
-    font-size:115%;
+    font-family:"NobileRegular", Arial, Verdana, sans-serif;
+    font-size:105%;
     padding-top:5px;
     padding-bottom:5px;
     border-top-style:dashed;
