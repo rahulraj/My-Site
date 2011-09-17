@@ -2,7 +2,7 @@
 <html>
  <head>
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-  <title> DecisionHelperBot Presentation</title>
+  <title> MITEvents Presentation</title>
   <!--Javascript black magic that makes IE standards-compliant!-->
   <!--[if lt IE 9]>
   <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
@@ -17,16 +17,19 @@
  <body>
   <div id="wrap">
    <header>
-    <h1>NYTQuery Extended</h1>
+    <h1>MIT Events</h1>
    </header>
    <article>
-    <img alt="Screenshot of the app" src="nyt_screenshot.png"> 
+    <img alt="Screenshot of the app" src="mit_events_screenshot.png"> 
     <ul>
-      <li>This app extends the NYT querying app that was provided.</li>
-      <li>It provides fields for a start date and an end date, which
-          are included in the query string sent to the NYT API.</li>
-      <li>The Google App Engine backend validates this input, then
-          passes it on to the web service.</li>
+      <li>This app looks up events that are happening at MIT and displys
+          them.</li>
+      <li>The Google App Engine backend forms a query and sends it out,
+          then picks out relevant data from the returned JSON string (which)
+          contains a lot of extraneous fields, and sends that to the phone.
+      </li>
+      <li>The phone paginates the various events and displays them. The
+          App Engine code does the heavy lifting when processing the data.</li>
    </article>
   </div><!--"wrap"-->
  </body>
