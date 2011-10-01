@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  <title> State Population Presentation</title>
+  <!--Javascript black magic that makes IE standards-compliant!-->
+  <!--[if lt IE 9]>
+  <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+  <![endif]-->
+  <!--Sticky footer fix for IE-->
+  <!--[if !IE 7]>
+  <style type="text/css">
+  #wrap {display:table;height:100%}
+  </style>
+  <![endif]-->
+ </head>
+ <body>
+  <div id="wrap">
+   <header>
+    <h1>State Population</h1>
+   </header>
+   <article>
+    <img alt="Screenshot of the backend blocks" src="StatePopulationBlocks.png"> 
+    <ul>
+      <li>The backend exercises some intermediate database query
+          features.</li>
+      <li>It performs a select, and uses a where clause to filter out
+          a state depending on what the user's input was.</li>
+      <li>I ran into a bit of a hiccup - for some reason trying to select
+          a specific row didn't work. It caused a syntatic error, possibly
+          because the row names have numbers and slashes in them.</li>
+      <li>My workaround was to select all the rows with the wildcard character
+          *, and then pick apart the result using App Inventor's string processing
+          functions.</li>
+   </article>
+   <nav>
+   <a href="statePopulationAppSlide2.html">Back</a>
+   <a href="assignment4.html">Back to assignment page</a>
+   </nav>
+  </div><!--"wrap"-->
+ </body>
+</html>
