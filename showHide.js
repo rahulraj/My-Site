@@ -1,12 +1,12 @@
 $(function() {
-  var toggleVisibility = $("h3").find("a");
+  var toggleVisibility = $('#mainText h3 a');
 
   // toggleVisibility is hidden by default for users who don't have
   // JavaScript enabled; this is to not confuse them by showing them
   // a nonfunctional link. Make it appear now.
   toggleVisibility.css("display", "inline");
 
-  toggleVisibility.click(function() {
+  $('#mainText').delegate('h3 a', 'click', function() {
     // find the content whose visibility will be toggled
     var parentArticle = $(this).parents("article");
     // leave the title in the h3 tags showing so the user will know
