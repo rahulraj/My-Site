@@ -20,7 +20,7 @@ $(function() {
     selectOptions[i] = $(selected).val();
   });
 
-  function ColorSet(headerHex, titleHex, mainHex, sideHex, bgHex) {
+  var ColorSet = function(headerHex, titleHex, mainHex, sideHex, bgHex) {
     // Constructor for an object that stores a set of the hexcodes
     // for a specified color scheme
     this.headerHex = headerHex;
@@ -28,46 +28,45 @@ $(function() {
     this.mainHex = mainHex;
     this.sideHex = sideHex;
     this.bgHex = bgHex;
-  }
+  };
 
-  function defaultColorSet() {
+  var defaultColorSet = function() {
     return new ColorSet('#0099FF', '#FFCC00', '#FFFFFF',
         '#808080', '#B0C4DE');
-  }
+  };
 
-  function changeColor(selector, color) {
+  var changeColor = function(selector, color) {
     // changes the background-color of the elements covered 
     // by selector to color
     $(selector).css("background-color", color);
-  }
+  };
 
-  function animateColor(selector, color) {
+  var animateColor = function(selector, color) {
     // like changeColor, but does the change with an
     // animation, using jquery.colors.js
     // we only animate the initial change of color when the
     // user first picks the new color, all other changes of
     // the css value are done instantly with changeColor
     $(selector).animate({backgroundColor: color}, 'slow');
-  }
+  };
 
-  function save() {
+  var save = function() {
     var newColors = new ColorSet(headerSelect.val(),
         titleSelect.val(),
         mainBodySelect.val(),
         navSelect.val(),
         backgroundSelect.val());
     $.cookie("color", JSON.stringify(newColors),{expires: 7});
-  }
+  };
 
-  function selectChangeEvent(selector, color)
-  {
+  var selectChangeEvent = function(selector, color) {
     // event that is called when one of the selects changes. 
     // The elements specified by selector animate a color
     // change to color, and the cookie is updated
     // accordingly
     animateColor(selector, color);
     save();
-  }
+  };
 
   headerSelect.change(function() {
     selectChangeEvent("header", headerSelect.val());
@@ -91,7 +90,7 @@ $(function() {
     selectChangeEvent("body", backgroundSelect.val());
   });
 
-  function set(colSet, shouldAnimate) {
+  var set = function(colSet, shouldAnimate) {
     // sets the selects' names and the background colors as
     // specified by colSet, animates if shouldAnimate is
     // true, else just changes the colors
@@ -110,20 +109,20 @@ $(function() {
     colorFun("nav, nav li", colSet.sideHex);
     colorFun("body", colSet.bgHex);
     return true;
-  }
+  };
 
-  function resetCookie() {
+  var resetCookie = function() {
     $.cookie("color", null);
-  }
+  };
 
   $("#resetButton").click(function() {
     set(defaultColorSet(), true);
     resetCookie();
   });
 
-  function randomNum(maxVal) {
+  var randomNum = function(maxVal) {
     return Math.floor(Math.random() * maxVal);
-  }
+  };
 
   $("#listRandom").click(function() {
     var randomColors = []; 
@@ -140,7 +139,7 @@ $(function() {
 
   $("#expRandom").click(function() {
 
-    function randRGBVal() {
+    var randRGBVal = function() {
       // FF in hex:
       var maxVal = 255;
       var colHex = randomNum(maxVal).toString(16); 
@@ -149,14 +148,14 @@ $(function() {
         colHex = "0" + colHex;
       }
       return colHex;
-    }
+    };
 
-    function getColorHex() {
+    var getColorHex = function() {
       var red = randRGBVal();
       var green = randRGBVal();
       var blue = randRGBVal();
       return "#" + red + green + blue;
-    }
+    };
     var newCols = [];
     $("select").each(function(index) {
       var col = getColorHex().toUpperCase();
@@ -174,14 +173,14 @@ $(function() {
     save();
   });
 
-  function setColorsFromCookie() {
+  var setColorsFromCookie = function() {
     // reads color and sets the colors accordingly
     // does NOT animate the color change, as the page should
     // load with the changed colors, and the user should not
     // see the original ones (they have already seen an
     // animation)
     set(JSON.parse($.cookie("color")), false);
-  }
+  };
 
   setColorsFromCookie();
 
