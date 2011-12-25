@@ -4,14 +4,7 @@ $(function() {
   // enabled. Make it visible now
   $('li a[href="colorScheme.html"]').css("display", "inline");
 
-  // UI elements in colorScheme.html
-  // these vars will not select anything if we are in a
-  // different page
-  var headerSelect = $("#headerSelect");
-  var titleSelect = $("#titleSelect");
-  var mainBodySelect = $("#mainBodySelect");
-  var navSelect = $("#navSelect");
-  var backgroundSelect = $("#backgroundSelect");
+  var mainBodyDiv = $('#mainBody');
 
   // read the options for the selects into an array to use for
   // the random color button
@@ -51,11 +44,12 @@ $(function() {
   };
 
   var save = function() {
-    var newColors = new ColorSet(headerSelect.val(),
-        titleSelect.val(),
-        mainBodySelect.val(),
-        navSelect.val(),
-        backgroundSelect.val());
+    var newColors = new ColorSet(
+        $('#headerSelect').val(),
+        $('#titleSelect').val(),
+        $('#mainBodySelect').val(),
+        $('#navSelect').val(),
+        $('#backgroundSelect').val());
     $.cookie("color", JSON.stringify(newColors),{expires: 7});
   };
 
@@ -68,26 +62,26 @@ $(function() {
     save();
   };
 
-  headerSelect.change(function() {
-    selectChangeEvent("header", headerSelect.val());
+  mainBodyDiv.delegate('#headerSelect', 'change', function() {
+    selectChangeEvent("header", $('#headerSelect').val());
   });
 
-  titleSelect.change(function() {
-    selectChangeEvent("h1", titleSelect.val());
+  mainBodyDiv.delegate('#titleSelect', 'change', function() {
+    selectChangeEvent("h1", $('#titleSelect').val());
   });
 
-  mainBodySelect.change(function() {
-    selectChangeEvent("#mainText", mainBodySelect.val());
+  mainBodyDiv.delegate('#mainBodySelect', 'change', function() {
+    selectChangeEvent("#mainText", $('#mainBodySelect').val());
   });
 
-  navSelect.change(function() {
+  mainBodyDiv.delegate('#navSelect', 'change', function() {
     // In case the user highlighted nav li's via
     // highlightNav.js, change them too
-    selectChangeEvent("nav, nav li", navSelect.val());
+    selectChangeEvent("nav, nav li", $('#navSelect').val());
   });
 
-  backgroundSelect.change(function() {
-    selectChangeEvent("body", backgroundSelect.val());
+  mainBodyDiv.delegate('#backgroundSelect', 'change', function() {
+    selectChangeEvent("body", $('#backgroundSelect').val());
   });
 
   var set = function(colSet, shouldAnimate) {
@@ -95,11 +89,11 @@ $(function() {
     // specified by colSet, animates if shouldAnimate is
     // true, else just changes the colors
     colSet = $.extend(defaultColorSet(), colSet);//remove null values just in case
-    headerSelect.val(colSet.headerHex);
-    titleSelect.val(colSet.titleHex);
-    mainBodySelect.val(colSet.mainHex);
-    navSelect.val(colSet.sideHex);
-    backgroundSelect.val(colSet.bgHex);
+    $('#headerSelect').val(colSet.headerHex);
+    $('titleSelect').val(colSet.titleHex);
+    $('mainBodySelect').val(colSet.mainHex);
+    $('navSelect').val(colSet.sideHex);
+    $('backgroundSelect').val(colSet.bgHex);
 
     var colorFun = shouldAnimate ? animateColor : changeColor;
 
@@ -108,14 +102,13 @@ $(function() {
     colorFun("#mainText", colSet.mainHex);
     colorFun("nav, nav li", colSet.sideHex);
     colorFun("body", colSet.bgHex);
-    return true;
   };
 
   var resetCookie = function() {
     $.cookie("color", null);
   };
 
-  $("#resetButton").click(function() {
+  mainBodyDiv.delegate('#resetButton', 'click', function() {
     set(defaultColorSet(), true);
     resetCookie();
   });
@@ -124,7 +117,7 @@ $(function() {
     return Math.floor(Math.random() * maxVal);
   };
 
-  $("#listRandom").click(function() {
+  mainBodyDiv.delegate('#listRandom', 'click', function() {
     var randomColors = []; 
     var numOptions = selectOptions.length;
     for (var i = 0; i < numOptions; i++) {
@@ -137,8 +130,7 @@ $(function() {
     save();
   });
 
-  $("#expRandom").click(function() {
-
+  mainBodyDiv.delegate('#expRandom', 'click', function() {
     var randRGBVal = function() {
       // FF in hex:
       var maxVal = 255;
