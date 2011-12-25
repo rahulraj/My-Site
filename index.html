@@ -10,6 +10,19 @@
     <script type="text/javascript" src="jquery.color.js"></script>
     <script type="text/javascript" src="colors.js"></script>
     <script type="text/javascript" src="highlightNav.js"></script>
+    <script type="text/javascript" src="out/goog/base.js"></script>
+    <script type="text/javascript" src="ajaxify.js"></script>
+    <script type="text/Javascript">
+      goog.require('ajaxify.main');
+      $(function() {
+        var anchors = ajaxify.main.navigational_anchors();
+        anchors.bind('click', function(event) {
+          var thisAnchor = $(this);
+          ajaxify.main.on_anchor_click(thisAnchor);
+          return false;
+        });
+      });
+    </script>
     <!--Javascript black magic that makes IE standards-compliant!-->
     <!--[if lt IE 9]>
     <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
