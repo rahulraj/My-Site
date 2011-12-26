@@ -3,9 +3,6 @@
 article input {
     display:none;
 }
-li a[href="colorScheme.html"] {
-    display:none;
-}
 #resetButton {
     text-align:center;
 }
