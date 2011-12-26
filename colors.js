@@ -4,7 +4,7 @@ $(function() {
   // enabled. Make it visible now
   $('li a[href="colorScheme.html"]').css("display", "inline");
 
-  var mainBodyDiv = $('#mainBody');
+  var mainTextDiv = $('#mainText');
 
   // read the options for the selects into an array to use for
   // the random color button
@@ -62,25 +62,25 @@ $(function() {
     save();
   };
 
-  mainBodyDiv.delegate('#headerSelect', 'change', function() {
+  mainTextDiv.delegate('#headerSelect', 'change', function() {
     selectChangeEvent("header", $('#headerSelect').val());
   });
 
-  mainBodyDiv.delegate('#titleSelect', 'change', function() {
+  mainTextDiv.delegate('#titleSelect', 'change', function() {
     selectChangeEvent("h1", $('#titleSelect').val());
   });
 
-  mainBodyDiv.delegate('#mainBodySelect', 'change', function() {
+  mainTextDiv.delegate('#mainBodySelect', 'change', function() {
     selectChangeEvent("#mainText", $('#mainBodySelect').val());
   });
 
-  mainBodyDiv.delegate('#navSelect', 'change', function() {
+  mainTextDiv.delegate('#navSelect', 'change', function() {
     // In case the user highlighted nav li's via
     // highlightNav.js, change them too
     selectChangeEvent("nav, nav li", $('#navSelect').val());
   });
 
-  mainBodyDiv.delegate('#backgroundSelect', 'change', function() {
+  mainTextDiv.delegate('#backgroundSelect', 'change', function() {
     selectChangeEvent("body", $('#backgroundSelect').val());
   });
 
@@ -90,10 +90,10 @@ $(function() {
     // true, else just changes the colors
     colSet = $.extend(defaultColorSet(), colSet);//remove null values just in case
     $('#headerSelect').val(colSet.headerHex);
-    $('titleSelect').val(colSet.titleHex);
-    $('mainBodySelect').val(colSet.mainHex);
-    $('navSelect').val(colSet.sideHex);
-    $('backgroundSelect').val(colSet.bgHex);
+    $('#titleSelect').val(colSet.titleHex);
+    $('#mainBodySelect').val(colSet.mainHex);
+    $('#navSelect').val(colSet.sideHex);
+    $('#backgroundSelect').val(colSet.bgHex);
 
     var colorFun = shouldAnimate ? animateColor : changeColor;
 
@@ -108,7 +108,7 @@ $(function() {
     $.cookie("color", null);
   };
 
-  mainBodyDiv.delegate('#resetButton', 'click', function() {
+  mainTextDiv.delegate('#resetButton', 'click', function() {
     set(defaultColorSet(), true);
     resetCookie();
   });
@@ -117,7 +117,7 @@ $(function() {
     return Math.floor(Math.random() * maxVal);
   };
 
-  mainBodyDiv.delegate('#listRandom', 'click', function() {
+  mainTextDiv.delegate('#listRandom', 'click', function() {
     var randomColors = []; 
     var numOptions = selectOptions.length;
     for (var i = 0; i < numOptions; i++) {
@@ -130,7 +130,7 @@ $(function() {
     save();
   });
 
-  mainBodyDiv.delegate('#expRandom', 'click', function() {
+  mainTextDiv.delegate('#expRandom', 'click', function() {
     var randRGBVal = function() {
       // FF in hex:
       var maxVal = 255;
