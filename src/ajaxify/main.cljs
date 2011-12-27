@@ -1,3 +1,11 @@
+;; Ajaxifies all loading of pages on my site, while preserving
+;; correct URLs and back/forward button behavior.
+;; Just to mix things up a bit (and build up my Lisp cred)
+;; this is written in ClojureScript.
+;; Compile by cding to the top-level directory, then invoking
+;; cljsc src '{optimizations :simple}' > ajaxify.js
+;; You can also do :whitespace for optimizations or set :pretty-print
+;; to true to produce more readable JavaScript for debugging.
 (ns ajaxify.main)
 
 (def main-text-id "#mainText")
@@ -64,6 +72,7 @@
   (. jquery-object (parent)))
 
 (defn name-to-href [page-name]
+  "Given the name of a page, look up its href."
   (let [name-map {"Home" "index.html"
                   "My Projects" "myProjects.html"
                   "My Classes" "myClasses.html"
@@ -73,7 +82,9 @@
                   "Color Scheme" "colorScheme.html"}]
     (name-map page-name)))
 
-(defn navigation-list-item-with-href [to-match]
+(defn navigation-list-item-with-href
+  "Find the li in nav with the link to the given href."
+  [to-match]
   (.filter (js/jQuery "nav li") (fn[]
     (let [self (js/jQuery (js* "this"))
           anchor (.find self "a")]
@@ -112,16 +123,14 @@
 
 (defn update-history
   "Update the history so the URL is still valid,
-   given the clicked anchor (which is now Ajaxy)
-   TODO make the back button work too."
+   given the clicked anchor (which is now Ajaxy)."
   [clicked-anchor]
   (let [new-href (.attr clicked-anchor "href")
         current-href (current-page-relative-href)
         history-data (make-js-map {:href current-href})]
-    ;(console/log (str "pushing current-href " current-href))
     (.pushState js/history history-data current-href new-href)))
 
-(defn ^:export on-anchor-click
+(defn on-anchor-click
   "Called on click of an anchor (the anchor is passed in)"
   [anchor]
   (doto anchor
@@ -129,17 +138,30 @@
     (restyle-anchors)
     (update-history)))
 
-(defn ^:export on-pop-state [state]
-  (when state
-    (let [to-href (.href state)]
-      (load-from-page to-href)
-      (restyle-anchors-for-page to-href))))
+(defn on-pop-state
+  "Called when the popstate event occurs. Updates the page to the
+   new URL (the URL, relative to the page root, is passed in)."
+  [to-href]
+  (load-from-page to-href)
+  (restyle-anchors-for-page to-href))
+
+(defn prevent-default
+  "Prevent the default action for the given event."
+  [event]
+  (. event (preventDefault)))
 
 (defn ^:export main
   "Entry point for the Clojurescript, to be called on load"
-  [& args]
-  ;(console/log "this is " (js* "this"))
-  (let [my-object {:name "rahul"}] ; TODO figure this out
-    ;(console/log (str "my name is " (.name my-object)))
-    (.append (js/jQuery "body") "<div>hello</div>")
-    my-object))
+  []
+  (.delegate (js/jQuery "nav") "li" "click" (fn [event]
+    (let [my-anchor (.find (js/jQuery (js* "this")) "a")]
+      (when (not (= 0 (.length my-anchor)))
+        (prevent-default event)
+        (on-anchor-click my-anchor))
+      false)))
+  (.addEventListener js/window "popstate" (fn [event]
+    (let [state (.state event)
+          ; At this point the URL has already been updated
+          to-href (current-page-relative-href)]
+      (when (.href state)
+        (on-pop-state to-href)))) false))
