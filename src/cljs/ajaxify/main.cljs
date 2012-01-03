@@ -149,7 +149,3 @@
           to-href (current-page-relative-href)]
       (when (.href state)
         (on-pop-state to-href)))) false))
-
-(defn ^:export sanity []
-  (macros/say-hello)
-  (console/log "hi world testing"))
