@@ -1,0 +1,2 @@
+goog.addDependency("../cljs/core.js", ['cljs.core'], ['goog.string', 'goog.array', 'goog.object', 'goog.string.StringBuffer']);
+goog.addDependency("../cljs/ajaxify/main.js", ['ajaxify.main'], ['cljs.core']);
