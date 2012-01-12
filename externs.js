@@ -10,6 +10,13 @@ jQueryObject.prototype.append = function(arg) {};
 jQueryObject.prototype.bind = function(arg1, arg2) {};
 jQueryObject.prototype.delegate = function(arg1, arg2, arg3) {};
 jQueryObject.prototype.removeAttr = function(arg) {};
+/**
+ * @param {*} arg1
+ * @param {*=} opt_arg2
+ * @param {*=} opt_arg3
+ * @param {*=} opt_arg4
+ */
+jQueryObject.prototype.on = function(arg1, opt_arg2, opt_arg3, opt_arg4) {};
 
 
 /**
