@@ -2,10 +2,6 @@
 ;; correct URLs and back/forward button behavior.
 ;; Just to mix things up a bit (and build up my Lisp cred)
 ;; this is written in ClojureScript.
-;; Compile by cding to the top-level directory, then invoking
-;; cljsc src '{optimizations :simple}' > ajaxify.js
-;; You can also do :whitespace for optimizations or set :pretty-print
-;; to true to produce more readable JavaScript for debugging.
 (ns ajaxify.main
   (:require-macros [ajaxify.macros :as macros]))
 
