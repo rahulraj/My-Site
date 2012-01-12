@@ -2,6 +2,7 @@
 ;; correct URLs and back/forward button behavior.
 ;; Just to mix things up a bit (and build up my Lisp cred)
 ;; this is written in ClojureScript.
+;; To compile this, run cljsRepl.py and follow its instructions.
 (ns ajaxify.main
   (:require-macros [ajaxify.macros :as macros]))
 
