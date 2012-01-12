@@ -6,12 +6,12 @@ ajaxify.main.main_text_id = "#mainText";
 * makes a javascript map from a clojure one
 */
 ajaxify.main.make_js_map = (function make_js_map(cljmap){
-var out__4261 = cljs.core.js_obj.call(null);
+var out__2382 = cljs.core.js_obj.call(null);
 
-cljs.core.doall.call(null,cljs.core.map.call(null,(function (p1__4260_SHARP_){
-return (out__4261[cljs.core.name.call(null,cljs.core.first.call(null,p1__4260_SHARP_))] = cljs.core.second.call(null,p1__4260_SHARP_));
+cljs.core.doall.call(null,cljs.core.map.call(null,(function (p1__2381_SHARP_){
+return (out__2382[cljs.core.name.call(null,cljs.core.first.call(null,p1__2381_SHARP_))] = cljs.core.second.call(null,p1__2381_SHARP_));
 }),cljmap));
-return out__4261;
+return out__2382;
 });
 /**
 * Extract the contents of the #mainText div from the container
@@ -27,16 +27,16 @@ return container.find(ajaxify.main.main_text_id).html();
 * page.
 */
 ajaxify.main.load_from_page = (function load_from_page(page_name){
-var to_load__4262 = cljs.core.str.call(null,page_name," ",ajaxify.main.main_text_id);
-var load_container__4263 = jQuery.call(null,"<span>");
-var main_text_element__4264 = jQuery.call(null,ajaxify.main.main_text_id);
+var to_load__2383 = cljs.core.str.call(null,page_name," ",ajaxify.main.main_text_id);
+var load_container__2384 = jQuery.call(null,"<span>");
+var main_text_element__2385 = jQuery.call(null,ajaxify.main.main_text_id);
 
-return main_text_element__4264.fadeOut("fast",(function (){
-return load_container__4263.load(to_load__4262,(function (){
-var new_main_text__4265 = ajaxify.main.main_text_from_load_container.call(null,load_container__4263);
+return main_text_element__2385.fadeOut("fast",(function (){
+return load_container__2384.load(to_load__2383,(function (){
+var new_main_text__2386 = ajaxify.main.main_text_from_load_container.call(null,load_container__2384);
 
-main_text_element__4264.html(new_main_text__4265);
-return main_text_element__4264.fadeIn("fast");
+main_text_element__2385.html(new_main_text__2386);
+return main_text_element__2385.fadeIn("fast");
 }));
 }));
 });
@@ -54,29 +54,29 @@ return ajaxify.main.load_from_page.call(null,anchor.attr("href"));
 * returns 'index.html'.
 */
 ajaxify.main.current_page_relative_href = (function current_page_relative_href(){
-var location__4266 = window.location;
-var url__4267 = location.href;
-var parts__4268 = url__4267.split("/");
+var location__2387 = window.location;
+var url__2388 = location.href;
+var parts__2389 = url__2388.split("/");
 
-return cljs.core.last.call(null,parts__4268);
+return cljs.core.last.call(null,parts__2389);
 });
 /**
 * Given the name of a page, look up its href.
 */
 ajaxify.main.name_to_href = (function name_to_href(page_name){
-var name_map__4269 = cljs.core.ObjMap.fromObject(["Home","My Projects","My Classes","Work Experience","Contact Information","Cochlear Implants","Color Scheme"],{"Home":"index.html","My Projects":"myProjects.html","My Classes":"myClasses.html","Work Experience":"workExperience.html","Contact Information":"contactInfo.html","Cochlear Implants":"cochlearImplants.html","Color Scheme":"colorScheme.html"});
+var name_map__2390 = cljs.core.ObjMap.fromObject(["Home","My Projects","My Classes","Work Experience","Contact Information","Cochlear Implants","Color Scheme"],{"Home":"index.html","My Projects":"myProjects.html","My Classes":"myClasses.html","Work Experience":"workExperience.html","Contact Information":"contactInfo.html","Cochlear Implants":"cochlearImplants.html","Color Scheme":"colorScheme.html"});
 
-return name_map__4269.call(null,page_name);
+return name_map__2390.call(null,page_name);
 });
 /**
 * Find the li in nav with the link to the given href.
 */
 ajaxify.main.navigation_list_item_with_href = (function navigation_list_item_with_href(to_match){
 return jQuery.call(null,"nav li").filter((function (){
-var self__4270 = jQuery.call(null,this);
-var anchor__4271 = self__4270.find("a");
+var self__2391 = jQuery.call(null,this);
+var anchor__2392 = self__2391.find("a");
 
-return cljs.core._EQ_.call(null,to_match,anchor__4271.attr("href"));
+return cljs.core._EQ_.call(null,to_match,anchor__2392.attr("href"));
 }));
 });
 /**
@@ -85,15 +85,15 @@ return cljs.core._EQ_.call(null,to_match,anchor__4271.attr("href"));
 * should be unlinkified while the rest are linkified.
 */
 ajaxify.main.restyle_anchors_for_page = (function restyle_anchors_for_page(destination_page_href){
-var current_page_list_item__4272 = jQuery.call(null,"#currentPage");
-var current_page_name__4273 = current_page_list_item__4272.html();
-var current_page_href__4274 = ajaxify.main.name_to_href.call(null,current_page_name__4273);
-var new_anchor__4275 = jQuery.call(null,"<a>",ajaxify.main.make_js_map.call(null,cljs.core.ObjMap.fromObject(["﷐'href","﷐'html"],{"﷐'href":current_page_href__4274,"﷐'html":current_page_name__4273})));
-var destination_list_item__4276 = ajaxify.main.navigation_list_item_with_href.call(null,destination_page_href);
-var destination_anchor__4277 = destination_list_item__4276.find("a");
+var current_page_list_item__2393 = jQuery.call(null,"#currentPage");
+var current_page_name__2394 = current_page_list_item__2393.html();
+var current_page_href__2395 = ajaxify.main.name_to_href.call(null,current_page_name__2394);
+var new_anchor__2396 = jQuery.call(null,"<a>",ajaxify.main.make_js_map.call(null,cljs.core.ObjMap.fromObject(["﷐'href","﷐'html"],{"﷐'href":current_page_href__2395,"﷐'html":current_page_name__2394})));
+var destination_list_item__2397 = ajaxify.main.navigation_list_item_with_href.call(null,destination_page_href);
+var destination_anchor__2398 = destination_list_item__2397.find("a");
 
-current_page_list_item__4272.removeAttr("id").html(new_anchor__4275);
-return site.addHoverEventsToAnchors.call(null,site.removeEvents.call(null,destination_list_item__4276.attr("id","currentPage").html(destination_anchor__4277.html())));
+current_page_list_item__2393.removeAttr("id").html(new_anchor__2396);
+return site.addHoverEventsToAnchors.call(null,site.removeEvents.call(null,destination_list_item__2397.attr("id","currentPage").html(destination_anchor__2398.html())));
 });
 /**
 * On any given page, the current page in the nav area
@@ -109,62 +109,60 @@ return ajaxify.main.restyle_anchors_for_page.call(null,clicked_anchor.attr("href
 * given the clicked anchor (which is now Ajaxy).
 */
 ajaxify.main.update_history = (function update_history(clicked_anchor){
-var new_href__4278 = clicked_anchor.attr("href");
-var current_href__4279 = ajaxify.main.current_page_relative_href.call(null);
-var history_data__4280 = ajaxify.main.make_js_map.call(null,cljs.core.ObjMap.fromObject(["﷐'href"],{"﷐'href":current_href__4279}));
+var new_href__2399 = clicked_anchor.attr("href");
+var current_href__2400 = ajaxify.main.current_page_relative_href.call(null);
+var history_data__2401 = ajaxify.main.make_js_map.call(null,cljs.core.ObjMap.fromObject(["﷐'href"],{"﷐'href":current_href__2400}));
 
-return history.pushState(history_data__4280,current_href__4279,new_href__4278);
+return history.pushState(history_data__2401,current_href__2400,new_href__2399);
 });
 /**
 * Called on click of an anchor (the anchor is passed in)
 */
 ajaxify.main.on_anchor_click = (function on_anchor_click(anchor){
-var G__4281__4282 = anchor;
+var G__2402__2403 = anchor;
 
-ajaxify.main.load_content.call(null,G__4281__4282);
-ajaxify.main.restyle_anchors.call(null,G__4281__4282);
-ajaxify.main.update_history.call(null,G__4281__4282);
-return G__4281__4282;
+ajaxify.main.load_content.call(null,G__2402__2403);
+ajaxify.main.restyle_anchors.call(null,G__2402__2403);
+ajaxify.main.update_history.call(null,G__2402__2403);
+return G__2402__2403;
 });
 /**
 * Called when the popstate event occurs. Updates the page to the
 * new URL (the URL, relative to the page root, is passed in).
 */
 ajaxify.main.on_pop_state = (function on_pop_state(to_href){
-var G__4283__4284 = to_href;
+var G__2404__2405 = to_href;
 
-ajaxify.main.load_from_page.call(null,G__4283__4284);
-ajaxify.main.restyle_anchors_for_page.call(null,G__4283__4284);
-return G__4283__4284;
+ajaxify.main.load_from_page.call(null,G__2404__2405);
+ajaxify.main.restyle_anchors_for_page.call(null,G__2404__2405);
+return G__2404__2405;
 });
 /**
 * Entry point for the Clojurescript, to be called on load
 */
 ajaxify.main.main = (function main(){
 jQuery.call(null,"nav").delegate("li","click",(function (event){
-var my_anchor__4285 = jQuery.call(null,this).find("a");
+var my_anchor__2406 = jQuery.call(null,this).find("a");
 
-if(cljs.core.truth_(cljs.core._EQ_.call(null,0,my_anchor__4285.length)))
+if(cljs.core.truth_(cljs.core._EQ_.call(null,0,my_anchor__2406.length)))
 {} else
 {event.preventDefault();
-ajaxify.main.on_anchor_click.call(null,my_anchor__4285);
+ajaxify.main.on_anchor_click.call(null,my_anchor__2406);
 }
 return false;
 }));
 return window.addEventListener("popstate",(function (event){
-var state__4286 = event.state;
-var to_href__4287 = ajaxify.main.current_page_relative_href.call(null);
+var state__2407 = event.state;
+var to_href__2408 = ajaxify.main.current_page_relative_href.call(null);
 
-if(cljs.core.truth_(state__4286.href))
-{return ajaxify.main.on_pop_state.call(null,to_href__4287);
+if(cljs.core.truth_(state__2407))
+{if(cljs.core.truth_(state__2407.href))
+{ajaxify.main.on_pop_state.call(null,to_href__2408);
 } else
-{return null;
-}
-}),false);
+{}
+} else
+{}
+return false;
+}));
 });
 goog.exportSymbol('ajaxify.main.main', ajaxify.main.main);
-ajaxify.main.sanity = (function sanity(){
-console.log.call(null,"Hello from a macro updated again");
-return console.log.call(null,"hi world testing");
-});
-goog.exportSymbol('ajaxify.main.sanity', ajaxify.main.sanity);
