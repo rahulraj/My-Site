@@ -6,7 +6,9 @@ $(function() {
   // a nonfunctional link. Make it appear now.
   toggleVisibility.css("display", "inline");
 
-  $('#mainText').delegate('h3 a', 'click', function() {
+  $('#mainText').delegate('h3 a', 'click', function(event) {
+    event.preventDefault();
+    event.stopPropagation();
     // find the content whose visibility will be toggled
     var parentArticle = $(this).parents("article");
     // leave the title in the h3 tags showing so the user will know
@@ -18,5 +20,6 @@ $(function() {
     // Change the anchor's inner HTML value to be the function it will perform
     var newVal = $(this).html() === "Hide" ? "Show" : "Hide";
     $(this).html(newVal);
+    return false;
   });
 });
