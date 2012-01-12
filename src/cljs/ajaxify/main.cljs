@@ -137,16 +137,17 @@
 (defn ^:export main
   "Entry point for the Clojurescript, to be called on load"
   []
-  (.delegate (js/jQuery "nav") "li" "click" (fn [event]
-    (let [my-anchor (.find (js/jQuery (js* "this")) "a")]
-      (when-not (= 0 (.length my-anchor))
-        (macros/object-call event preventDefault)
-        (on-anchor-click my-anchor))
-      false)))
-  (.addEventListener js/window "popstate" (fn [event]
-    (let [state (.state event)
-          ; At this point the URL has already been updated
-          to-href (current-page-relative-href)]
-      (when state
-        (when (.href state)
-          (on-pop-state to-href)))) false)))
+  (when js/history ; Don't do anything if the History API isn't available
+    (.delegate (js/jQuery "nav") "li" "click" (fn [event]
+      (let [my-anchor (.find (js/jQuery (js* "this")) "a")]
+        (when-not (= 0 (.length my-anchor))
+          (macros/object-call event preventDefault)
+          (on-anchor-click my-anchor))
+        false)))
+    (.addEventListener js/window "popstate" (fn [event]
+      (let [state (.state event)
+            ; At this point the URL has already been updated
+            to-href (current-page-relative-href)]
+        (when state
+          (when (.href state)
+            (on-pop-state to-href)))) false))))
