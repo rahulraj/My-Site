@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# This is a HUGE hack. Do not emulate it.
+# This is a HUGE hack. Do not emulate it. Try wrestling with Leiningen instead.
 import os
 
 def main():
@@ -21,18 +21,31 @@ def main():
   old_classpath = "/home/rahulraj/dls/clojurescript/lib/goog.jar:/home/rahulraj/dls/clojurescript/lib/compiler.jar:/home/rahulraj/dls/clojurescript/lib/clojure.jar:/home/rahulraj/dls/clojurescript/lib/js.jar:/home/rahulraj/dls/clojurescript/src/clj:/home/rahulraj/dls/clojurescript/src/cljs:/home/rahulraj/dls/clojurescript/test/cljs"
 
   # Add the directories for this project
-  classpath_with_ajaxify_macros = old_classpath + ":/home/rahulraj/www/src/clj:/home/rahulraj/www/src/cljs"
+  classpath_with_ajaxify_macros = old_classpath + ":/home/rahulraj/Documents/www/src/clj:/home/rahulraj/Documents/www/src/cljs"
 
   #classpath_with_ajaxify_macros = old_classpath
 
+  print """
+      If you're not Rahul Rajagopalan, you'll need to edit
+      cljsRepl.py. Set old_classpath to the result you get by
+      invoking (System/getProperty) and also update
+      classpath_with_ajaxify_macros to point to where the ajaxify code is.
+      """
   # Might as well rlwrap it while we're at it
   command = "rlwrap java -server -cp %s clojure.main" % \
       (classpath_with_ajaxify_macros,)
 
   print """ \
-      In this REPL, compile by calling
+      In this REPL, compile the code by calling
       (require '[cljs.closure :as cljsc])
       (cljsc/build "src" {:output-dir "out" :output-to "ajaxify.js"})
+      """
+  print """
+      You can compile with optimizations by writing
+      (cljs/build "src" {:output-dir "out" :output-to "ajaxify.js"
+       :optimizations :advanced :externs ["externs.js"]})
+
+      Have fun!
       """
   print command
   os.system(command)
