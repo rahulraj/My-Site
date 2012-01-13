@@ -10,7 +10,8 @@ $(function() {
     event.preventDefault();
     event.stopPropagation();
     // find the content whose visibility will be toggled
-    var parentArticle = $(this).parents("article");
+    var thisItem = $(this);
+    var parentArticle = thisItem.parents("article");
     // leave the title in the h3 tags showing so the user will know
     // what will appear when they click Show
     var contentToChange = parentArticle.children().not("h3");
@@ -18,8 +19,8 @@ $(function() {
     // jQuery's slideToggle method does the heavy lifting
     contentToChange.slideToggle();
     // Change the anchor's inner HTML value to be the function it will perform
-    var newVal = $(this).html() === "Hide" ? "Show" : "Hide";
-    $(this).html(newVal);
+    var newHtml = thisItem.html() === "Hide" ? "Show" : "Hide";
+    thisItem.html(newHtml);
     return false;
   });
 });

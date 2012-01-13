@@ -84,24 +84,24 @@ $(function() {
     selectChangeEvent("body", $('#backgroundSelect').val());
   });
 
-  var set = function(colSet, shouldAnimate) {
+  var set = function(colorSet, shouldAnimate) {
     // sets the selects' names and the background colors as
-    // specified by colSet, animates if shouldAnimate is
+    // specified by colorSet, animates if shouldAnimate is
     // true, else just changes the colors
-    colSet = $.extend(defaultColorSet(), colSet);//remove null values just in case
-    $('#headerSelect').val(colSet.headerHex);
-    $('#titleSelect').val(colSet.titleHex);
-    $('#mainBodySelect').val(colSet.mainHex);
-    $('#navSelect').val(colSet.sideHex);
-    $('#backgroundSelect').val(colSet.bgHex);
+    colorSet = $.extend(defaultColorSet(), colorSet);//remove null values just in case
+    $('#headerSelect').val(colorSet.headerHex);
+    $('#titleSelect').val(colorSet.titleHex);
+    $('#mainBodySelect').val(colorSet.mainHex);
+    $('#navSelect').val(colorSet.sideHex);
+    $('#backgroundSelect').val(colorSet.bgHex);
 
-    var colorFun = shouldAnimate ? animateColor : changeColor;
+    var colorFunction = shouldAnimate ? animateColor : changeColor;
 
-    colorFun("header", colSet.headerHex);
-    colorFun("h1", colSet.titleHex);
-    colorFun("#mainText", colSet.mainHex);
-    colorFun("nav, nav li", colSet.sideHex);
-    colorFun("body", colSet.bgHex);
+    colorFunction("header", colorSet.headerHex);
+    colorFunction("h1", colorSet.titleHex);
+    colorFunction("#mainText", colorSet.mainHex);
+    colorFunction("nav, nav li", colorSet.sideHex);
+    colorFunction("body", colorSet.bgHex);
   };
 
   var resetCookie = function() {
@@ -113,8 +113,8 @@ $(function() {
     resetCookie();
   });
 
-  var randomNum = function(maxVal) {
-    return Math.floor(Math.random() * maxVal);
+  var randomNum = function(maximumValue) {
+    return Math.floor(Math.random() * maximumValue);
   };
 
   mainTextDiv.on('click', '#listRandom', function() {
@@ -123,45 +123,45 @@ $(function() {
     for (var i = 0; i < numOptions; i++) {
       randomColors[i] = selectOptions[randomNum(numOptions)];
     }
-    var randCols = new ColorSet(randomColors[0], randomColors[1],
+    var randomColorSet = new ColorSet(randomColors[0], randomColors[1],
       randomColors[2], randomColors[3],
       randomColors[4]);
-    set(randCols, true);
+    set(randomColorSet, true);
     save();
   });
 
   mainTextDiv.on('click', '#expRandom', function() {
-    var randRGBVal = function() {
+    var randomRgbValue = function() {
       // FF in hex:
-      var maxVal = 255;
-      var colHex = randomNum(maxVal).toString(16); 
+      var maximumValue = 255;
+      var colorHex = randomNum(maximumValue).toString(16); 
       // pad it with leading 0's if needed
-      while (colHex.length < 2) {
-        colHex = "0" + colHex;
+      while (colorHex.length < 2) {
+        colorHex = "0" + colorHex;
       }
-      return colHex;
+      return colorHex;
     };
 
     var getColorHex = function() {
-      var red = randRGBVal();
-      var green = randRGBVal();
-      var blue = randRGBVal();
+      var red = randomRgbValue();
+      var green = randomRgbValue();
+      var blue = randomRgbValue();
       return "#" + red + green + blue;
     };
-    var newCols = [];
+    var newColors = [];
     $("select").each(function(index) {
-      var col = getColorHex().toUpperCase();
+      var color = getColorHex().toUpperCase();
       var self = $(this);
-      var newColOption = $("<option>", {
-        value : col,
-          html : col});
-      self.append(newColOption);
-      self.val(col);
-      newCols[index] = col;
+      var newColorOption = $("<option>", {
+        value : color,
+        html : color});
+      self.append(newColorOption);
+      self.val(color);
+      newColors[index] = color;
     });
-    set(new ColorSet(newCols[0], newCols[1],
-          newCols[2], newCols[3],
-          newCols[4]), true);
+    set(new ColorSet(newColors[0], newColors[1],
+          newColors[2], newColors[3],
+          newColors[4]), true);
     save();
   });
 
