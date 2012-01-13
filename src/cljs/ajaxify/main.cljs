@@ -135,7 +135,7 @@
   "Entry point for the Clojurescript, to be called on load"
   []
   (when js/history ; Don't do anything if the History API isn't available
-    (.delegate (js/jQuery "nav") "li" "click" (fn [event]
+    (.on (js/jQuery "nav") "click" "li" (fn [event]
       (let [my-anchor (.find (js/jQuery (js* "this")) "a")]
         (when-not (= 0 (.length my-anchor))
           (macros/object-call event preventDefault)

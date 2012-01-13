@@ -21,7 +21,7 @@ def main():
   old_classpath = "/home/rahulraj/dls/clojurescript/lib/goog.jar:/home/rahulraj/dls/clojurescript/lib/compiler.jar:/home/rahulraj/dls/clojurescript/lib/clojure.jar:/home/rahulraj/dls/clojurescript/lib/js.jar:/home/rahulraj/dls/clojurescript/src/clj:/home/rahulraj/dls/clojurescript/src/cljs:/home/rahulraj/dls/clojurescript/test/cljs"
 
   # Add the directories for this project
-  classpath_with_ajaxify_macros = old_classpath + ":/home/rahulraj/Documents/www/src/clj:/home/rahulraj/Documents/www/src/cljs"
+  classpath_with_ajaxify_macros = old_classpath + ":/home/rahulraj/www/src/clj:/home/rahulraj/www/src/cljs"
 
   #classpath_with_ajaxify_macros = old_classpath
 
