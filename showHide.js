@@ -6,7 +6,7 @@ $(function() {
   // a nonfunctional link. Make it appear now.
   toggleVisibility.css("display", "inline");
 
-  $('#mainText').delegate('h3 a', 'click', function(event) {
+  $('#mainText').on('click', 'h3 a', function(event) {
     event.preventDefault();
     event.stopPropagation();
     // find the content whose visibility will be toggled
