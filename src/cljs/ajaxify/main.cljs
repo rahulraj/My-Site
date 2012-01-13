@@ -145,6 +145,6 @@
       (let [state (.state event)
             ; At this point the URL has already been updated
             to-href (current-page-relative-href)]
-        (when state
-          (when (.href state)
-            (on-pop-state to-href)))) false))))
+        (when (and state (.href state))
+          (on-pop-state to-href))))
+      false)))
