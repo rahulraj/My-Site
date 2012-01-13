@@ -62,25 +62,25 @@ $(function() {
     save();
   };
 
-  mainTextDiv.delegate('#headerSelect', 'change', function() {
+  mainTextDiv.on('change', '#headerSelect', function() {
     selectChangeEvent("header", $('#headerSelect').val());
   });
 
-  mainTextDiv.delegate('#titleSelect', 'change', function() {
+  mainTextDiv.on('change', '#titleSelect', function() {
     selectChangeEvent("h1", $('#titleSelect').val());
   });
 
-  mainTextDiv.delegate('#mainBodySelect', 'change', function() {
+  mainTextDiv.on('change', '#mainBodySelect', function() {
     selectChangeEvent("#mainText", $('#mainBodySelect').val());
   });
 
-  mainTextDiv.delegate('#navSelect', 'change', function() {
+  mainTextDiv.on('change', '#navSelect', function() {
     // In case the user highlighted nav li's via
     // highlightNav.js, change them too
     selectChangeEvent("nav, nav li", $('#navSelect').val());
   });
 
-  mainTextDiv.delegate('#backgroundSelect', 'change', function() {
+  mainTextDiv.on('change', '#backgroundSelect', function() {
     selectChangeEvent("body", $('#backgroundSelect').val());
   });
 
@@ -108,7 +108,7 @@ $(function() {
     $.cookie("color", null);
   };
 
-  mainTextDiv.delegate('#resetButton', 'click', function() {
+  mainTextDiv.on('click', '#resetButton', function() {
     set(defaultColorSet(), true);
     resetCookie();
   });
@@ -117,7 +117,7 @@ $(function() {
     return Math.floor(Math.random() * maxVal);
   };
 
-  mainTextDiv.delegate('#listRandom', 'click', function() {
+  mainTextDiv.on('click', '#listRandom', function() {
     var randomColors = []; 
     var numOptions = selectOptions.length;
     for (var i = 0; i < numOptions; i++) {
@@ -130,7 +130,7 @@ $(function() {
     save();
   });
 
-  mainTextDiv.delegate('#expRandom', 'click', function() {
+  mainTextDiv.on('click', '#expRandom', function() {
     var randRGBVal = function() {
       // FF in hex:
       var maxVal = 255;
