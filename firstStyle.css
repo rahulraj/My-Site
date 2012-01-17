@@ -1,165 +1,141 @@
-/* Fonts */
-/* TitilliumText, a serif font, licensed under the SIL Open Font Licence 1.1 */
-@font-face {
-    font-family: 'TitilliumText22LMedium';
-    src: url('fonts/TitilliumText/TitilliumText22L004-webfont.eot');
-    src: url('fonts/TitilliumText/TitilliumText22L004-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/TitilliumText/TitilliumText22L004-webfont.woff') format('woff'),
-         url('fonts/TitilliumText/TitilliumText22L004-webfont.ttf') format('truetype'),
-         url('fonts/TitilliumText/TitilliumText22L004-webfont.svg#TitilliumText22LMedium') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-/* Nobile, a sans-seif font, also licensed under the SIL Open Font Licence 1.1 */
-@font-face {
-    font-family: 'NobileRegular';
-    src: url('fonts/Nobile/nobile-webfont.eot');
-    src: url('fonts/Nobile/nobile-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/Nobile/nobile-webfont.woff') format('woff'),
-         url('fonts/Nobile/nobile-webfont.ttf') format('truetype'),
-         url('fonts/Nobile/nobile-webfont.svg#NobileRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
 * {
-    margin:0;
-    padding:0;
+  margin:0;
+  padding:0;
 }
 html, body {
-    position:relative;
-    background-color:#B0C4DE; /* light steel blue */
-    height:100%;
-    margin:0;
-    padding:0;
+  position:relative;
+  background-color:#B0C4DE; /* light steel blue */
+  height:100%;
+  margin:0;
+  padding:0;
 }
 /* HTML 5 elements that should be block-level; "help" older browsers */
 header, nav, article, footer, address {
-    display:block;
+  display:block;
 }
 header {
-    background-color:#0099FF /*blue*/
-    box-shadow: 0px 0px 5px #888;
-    -moz-box-shadow: 0px 0px 5px #888;
-    -webkit-box-shadow: 0px 0px 5px #888;
-    padding-bottom:3px;
+  background-color:#0099FF /*blue*/
+  box-shadow: 0px 0px 5px #888;
+  -moz-box-shadow: 0px 0px 5px #888;
+  -webkit-box-shadow: 0px 0px 5px #888;
+  padding-bottom:3px;
 }
 h1 {
-    position:relative;
-    left:20%;
-    display:inline;
-    background-color:#FFCC00;
-    padding-bottom:3px;
-    padding-left:5px;
-    padding-right:5px;
+  position:relative;
+  left:20%;
+  display:inline;
+  background-color:#FFCC00;
+  padding-bottom:3px;
+  padding-left:5px;
+  padding-right:5px;
 }
 div#wrap {
-    min-height:100%;
-    margin:0 auto;
+  min-height:100%;
+  margin:0 auto;
 }
 div#main {
-    overflow:auto;
-    padding-bottom:10px;
-    margin-left:auto;
-    margin-right:auto;
-    margin-top:5px;
-    width:70%;
-    
-    /*prevents box-shadow from causing a scollbar to appear in Firefox */
-    overflow:hidden;
+  overflow:auto;
+  padding-bottom:10px;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:5px;
+  width:70%;
+
+  /*prevents box-shadow from causing a scollbar to appear in Firefox */
+  overflow:hidden;
 }
 div#mainText {
-    background-color:#FFFFFF; /* white */
-    margin-top:0;
-    margin-bottom:0;
-    margin-left:21px;
-    padding:10px;
-    width:60%;
-    font-family:"TitilliumText22LMedium", "Times New Roman", Georgia, serif;
-    border-radius: 10px;
-    -moz-border-radius: 10px;
-    position:relative;
-    top:10px;
-    float:left;
-    box-shadow: 0px 0px 5px #888;
-    -moz-box-shadow: 0px 0px 5px #888;
-    -webkit-box-shadow: 0px 0px 5px #888;
-    line-height:123%;
+  background-color:#FFFFFF; /* white */
+  margin-top:0;
+  margin-bottom:0;
+  margin-left:21px;
+  padding:10px;
+  width:60%;
+  font-family:"TitilliumText22LMedium", "Times New Roman", Georgia, serif;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  position:relative;
+  top:10px;
+  float:left;
+  box-shadow: 0px 0px 5px #888;
+  -moz-box-shadow: 0px 0px 5px #888;
+  -webkit-box-shadow: 0px 0px 5px #888;
+  line-height:123%;
 }
 img[src="mit_logo_shrunk.png"] {
-    float:left;
+  float:left;
 }
 img[src="rasmaller.jpg"] {
-    display:block;
-    margin-left:auto;
-    margin-right:auto;
-    padding-top:15px;
-    padding-bottom:15px;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  padding-top:15px;
+  padding-bottom:15px;
 }
 h1, h2 {
-    font-family:"NobileRegular", Arial, Verdana, sans-serif;
-    font-size:190%;
-    text-align:center;
-    text-shadow:2px 2px 2px #ccc;
+  font-family:"NobileRegular", Arial, Verdana, sans-serif;
+  font-size:190%;
+  text-align:center;
+  text-shadow:2px 2px 2px #ccc;
 }
 h2 {
-    font-size:140%;
-    padding-bottom:5px;
+  font-size:140%;
+  padding-bottom:5px;
 }
 h3 {
-    font-family:"NobileRegular", Arial, Verdana, sans-serif;
-    font-size:105%;
-    padding-top:5px;
-    padding-bottom:5px;
-    border-top-style:dashed;
-    border-top-width:1px;
-    margin-top:5px;
+  font-family:"NobileRegular", Arial, Verdana, sans-serif;
+  font-size:105%;
+  padding-top:5px;
+  padding-bottom:5px;
+  border-top-style:dashed;
+  border-top-width:1px;
+  margin-top:5px;
 }
 p  {
-    padding-top:5px;
-    padding-bottom:5px;
+  padding-top:5px;
+  padding-bottom:5px;
 }
 ul {
-    list-style-type:none;
+  list-style-type:none;
 }
 nav {
-    float:right;
-    position:relative;
-    top:10px;
-    border-radius: 10px;
-    -moz-border-radius: 10px;
-    background-color:#808080; /* gray */
-    width:30%;
-    padding-top:5px;
-    padding-bottom:5px;
-    line-height:200%;
-    box-shadow: 0px 0px 5px #888;
-    -moz-box-shadow: 0px 0px 5px #888;
-    -webkit-box-shadow: 0px 0px 5px #888;
+  float:right;
+  position:relative;
+  top:10px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  background-color:#808080; /* gray */
+  width:30%;
+  padding-top:5px;
+  padding-bottom:5px;
+  line-height:200%;
+  box-shadow: 0px 0px 5px #888;
+  -moz-box-shadow: 0px 0px 5px #888;
+  -webkit-box-shadow: 0px 0px 5px #888;
 }
 nav li {
-    padding-left:10px;
+  padding-left:10px;
 }
 li#currentPage {
-    font-weight:bold;
+  font-weight:bold;
 }
 footer {
-    position:relative;
-    margin-top:-10px;
-    height:10px;
-    clear:both;
+  position:relative;
+  margin-top:-10px;
+  height:10px;
+  clear:both;
 }
 form  {
-    padding:10px;
+  padding:10px;
 }
 form li {
-    padding:5px;
+  padding:5px;
 }
 /*Sticky footer Opera fix*/
 body:before {
-    content:"";
-    height:100%;
-    float:left;
-    width:0;
-    margin-top:-32767px;
+  content:"";
+  height:100%;
+  float:left;
+  width:0;
+  margin-top:-32767px;
 }
