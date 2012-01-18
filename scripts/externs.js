@@ -68,6 +68,7 @@ jQueryObject.prototype.fadeOut = function(opt_arg1, opt_arg2, opt_arg3) {};
  */
 jQueryObject.prototype.fadeIn = function(opt_arg1, opt_arg2, opt_arg3) {};
 
+jQueryObject.prototype.replaceWith = function(arg) {};
 
 /**
  * Terminal objects.
