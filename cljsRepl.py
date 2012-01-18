@@ -38,12 +38,12 @@ def main():
   print """ \
       In this REPL, compile the code by calling
       (require '[cljs.closure :as cljsc])
-      (cljsc/build "src" {:output-dir "out" :output-to "ajaxify.js"})
+      (cljsc/build "src" {:output-dir "out" :output-to "scripts/ajaxify.js"})
       """
   print """
       You can compile with optimizations by writing
-      (cljs/build "src" {:output-dir "out" :output-to "ajaxify.js"
-       :optimizations :advanced :externs ["externs.js"]})
+      (cljs/build "src" {:output-dir "out" :output-to "scripts/ajaxify.js"
+       :optimizations :advanced :externs ["scripts/externs.js"]})
 
       Have fun!
       """
