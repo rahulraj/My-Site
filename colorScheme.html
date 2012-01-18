@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head> 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Rahul Rajagopalan's Site - Color Scheme</title>
-    <link rel="stylesheet" type="text/css" href="firstStyle.css">
-    <link rel="stylesheet" type="text/css" href="jsStyle.css">
-    <script type="text/javascript" src="jquery.js"></script>
-    <script type="text/javascript" src="jquery.cookie.js"></script>
-    <script type="text/javascript" src="jquery.color.js"></script>
-    <script type="text/javascript" src="highlightNav.js"></script>
-    <script type="text/javascript" src="showHide.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Rahul Rajagopalan | Color Scheme</title>
+    <link href="http://fonts.googleapis.com/css?family=Duru+Sans"
+          rel="stylesheet" type="text/css" /> 
+    <link href="http://fonts.googleapis.com/css?family=Metrophobic"
+          rel="stylesheet" type="text/css" /> 
+    <link rel="stylesheet" type="text/css" href="style/reset.css" />
+    <link rel="stylesheet" type="text/css" href="style/text.css" />
+    <link rel="stylesheet" type="text/css" href="style/fluid_grid.css" />
+    <link rel="stylesheet" type="text/css" href="style/firstStyle.css" />
+    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <script type="text/javascript" src="scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="scripts/jquery.color.js"></script>
+    <script type="text/javascript" src="scripts/highlightNav.js"></script>
+    <script type="text/javascript" src="scripts/showHide.js"></script>
     <script type="text/javascript" src="out/goog/base.js"></script>
-    <script type="text/javascript" src="ajaxify.js"></script>
-    <script type="text/javascript" src="callAjaxify.js"></script>
+    <script type="text/javascript" src="scripts/ajaxify.js"></script>
+    <script type="text/javascript" src="scripts/callAjaxify.js"></script>
     <!--Javascript black magic that makes IE standards-compliant!-->
     <!--[if lt IE 9]>
     <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
@@ -25,129 +31,126 @@
     <![endif]-->
   </head>
   <body>
-    <div id="wrap">
-      <header>
-      <img alt="MIT logo" src="mit_logo_shrunk.png"><h1>Rahul Rajagopalan</h1>
-      </header>
-      <div id="main">
-        <div id="mainText">
-          <h2>Color Scheme</h2>
-          <form>
-            <fieldset>
-              <legend>Play with the colors!</legend>
-              <ul>
-                <li>Header
-                <select name="header" id="headerSelect">
-                  <option value="#0099FF" selected="selected">Blue</option>
-                  <option value="#32CD32">Lime Green</option>
-                  <option value="#7FFFD4">Aquamarine</option>
-                  <option value="#808080">Gray</option>
-                  <option value="#B0C4DE">Light Steel Blue</option>
-                  <option value="#EBECE4">Light Gray</option>
-                  <option value="#F5DEB3">Tan</option>
-                  <option value="#FF0000">Red</option>
-                  <option value="#FFA500">Orange</option>
-                  <option value="#FFCC00">Yellow</option>
-                  <option value="#FFD700">Gold</option>
-                  <option value="#FFFFFF">White</option>
-                </select></li>
+    <header>
+      <h1>Rahul Rajagopalan</h1>
+      <nav>
+        <a href="index.html">Home</a> | 
+        <a href="myProjects.html">Projects</a> | 
+        <a href="myClasses.html">Classes</a> | 
+        <a href="workExperience.html">Work Experience</a> | 
+        <a href="contactInfo.html">Contact</a> | 
+        <a href="cochlearImplants.html">Cochlear Implants</a> | 
+        <span id="currentPage">Colors</span>
+      </nav>
+    </header>
 
-                <li>Title
-                <select name="title" id="titleSelect">
-                  <option value="#0099FF">Blue</option>
-                  <option value="#32CD32">Lime Green</option>
-                  <option value="#7FFFD4">Aquamarine</option>
-                  <option value="#808080">Gray</option>
-                  <option value="#B0C4DE">Light Steel Blue</option>
-                  <option value="#EBECE4">Light Gray</option>
-                  <option value="#F5DEB3">Tan</option>
-                  <option value="#FF0000">Red</option>
-                  <option value="#FFA500">Orange</option>
-                  <option value="#FFCC00" selected="selected">Yellow</option>
-                  <option value="#FFD700">Gold</option>
-                  <option value="#FFFFFF">White</option>
-                </select></li>
+    <h2>Colors</h2>
+    <article class="container_12">
+      <div class="grid_12">
+        <form>
+          <fieldset>
+            <legend>Play with the colors!</legend>
+            <ul>
+              <li>Header
+              <select name="header" id="headerSelect">
+                <option value="#0099FF" selected="selected">Blue</option>
+                <option value="#32CD32">Lime Green</option>
+                <option value="#7FFFD4">Aquamarine</option>
+                <option value="#808080">Gray</option>
+                <option value="#B0C4DE">Light Steel Blue</option>
+                <option value="#EBECE4">Light Gray</option>
+                <option value="#F5DEB3">Tan</option>
+                <option value="#FF0000">Red</option>
+                <option value="#FFA500">Orange</option>
+                <option value="#FFCC00">Yellow</option>
+                <option value="#FFD700">Gold</option>
+                <option value="#FFFFFF">White</option>
+              </select></li>
 
-                <li>Main Body
-                <select name="mainBody" id="mainBodySelect">
-                  <option value="#0099FF">Blue</option>
-                  <option value="#32CD32">Lime Green</option>
-                  <option value="#7FFFD4">Aquamarine</option>
-                  <option value="#808080">Gray</option>
-                  <option value="#B0C4DE">Light Steel Blue</option>
-                  <option value="#EBECE4">Light Gray</option>
-                  <option value="#F5DEB3">Tan</option>
-                  <option value="#FF0000">Red</option>
-                  <option value="#FFA500">Orange</option>
-                  <option value="#FFCC00">Yellow</option>
-                  <option value="#FFD700">Gold</option>
-                  <option value="#FFFFFF" selected="selected">White</option>
-                </select></li>
+              <li>Title
+              <select name="title" id="titleSelect">
+                <option value="#0099FF">Blue</option>
+                <option value="#32CD32">Lime Green</option>
+                <option value="#7FFFD4">Aquamarine</option>
+                <option value="#808080">Gray</option>
+                <option value="#B0C4DE">Light Steel Blue</option>
+                <option value="#EBECE4">Light Gray</option>
+                <option value="#F5DEB3">Tan</option>
+                <option value="#FF0000">Red</option>
+                <option value="#FFA500">Orange</option>
+                <option value="#FFCC00" selected="selected">Yellow</option>
+                <option value="#FFD700">Gold</option>
+                <option value="#FFFFFF">White</option>
+              </select></li>
 
-                <li>Navigation Bar
-                <select name="sidebar" id="navSelect">
-                  <option value="#0099FF">Blue</option>
-                  <option value="#32CD32">Lime Green</option>
-                  <option value="#7FFFD4">Aquamarine</option>
-                  <option value="#808080" selected="selected">Gray</option>
-                  <option value="#B0C4DE">Light Steel Blue</option>
-                  <option value="#EBECE4">Light Gray</option>
-                  <option value="#F5DEB3">Tan</option>
-                  <option value="#FF0000">Red</option>
-                  <option value="#FFA500">Orange</option>
-                  <option value="#FFCC00">Yellow</option>
-                  <option value="#FFD700">Gold</option>
-                  <option value="#FFFFFF">White</option>
-                </select></li>
+              <li>Main Body
+              <select name="mainBody" id="mainBodySelect">
+                <option value="#0099FF">Blue</option>
+                <option value="#32CD32">Lime Green</option>
+                <option value="#7FFFD4">Aquamarine</option>
+                <option value="#808080">Gray</option>
+                <option value="#B0C4DE">Light Steel Blue</option>
+                <option value="#EBECE4">Light Gray</option>
+                <option value="#F5DEB3">Tan</option>
+                <option value="#FF0000">Red</option>
+                <option value="#FFA500">Orange</option>
+                <option value="#FFCC00">Yellow</option>
+                <option value="#FFD700">Gold</option>
+                <option value="#FFFFFF" selected="selected">White</option>
+              </select></li>
 
-                <li>Background
-                <select name="background" id="backgroundSelect">
-                  <option value="#0099FF">Blue</option>
-                  <option value="#32CD32">Lime Green</option>
-                  <option value="#7FFFD4">Aquamarine</option>
-                  <option value="#808080">Gray</option>
-                  <option value="#B0C4DE" selected="selected">Light Steel Blue</option>
-                  <option value="#EBECE4">Light Gray</option>
-                  <option value="#F5DEB3">Tan</option>
-                  <option value="#FF0000">Red</option>
-                  <option value="#FFA500">Orange</option>
-                  <option value="#FFCC00">Yellow</option>
-                  <option value="#FFD700">Gold</option>
-                  <option value="#FFFFFF">White</option>
-                </select></li>
+              <li>Navigation Bar
+              <select name="sidebar" id="navSelect">
+                <option value="#0099FF">Blue</option>
+                <option value="#32CD32">Lime Green</option>
+                <option value="#7FFFD4">Aquamarine</option>
+                <option value="#808080" selected="selected">Gray</option>
+                <option value="#B0C4DE">Light Steel Blue</option>
+                <option value="#EBECE4">Light Gray</option>
+                <option value="#F5DEB3">Tan</option>
+                <option value="#FF0000">Red</option>
+                <option value="#FFA500">Orange</option>
+                <option value="#FFCC00">Yellow</option>
+                <option value="#FFD700">Gold</option>
+                <option value="#FFFFFF">White</option>
+              </select></li>
 
-                <li>
-                <input id="listRandom" value="Preselected Random Colors" type="button">
-                <input id="expRandom" value="Experimental Random Colors" type="button">
-                </li>
-                <li>
-                <input id="resetButton" value="Reset to Default" type="button">
-                </li>
-              </ul>
-            </fieldset>
-          </form>
+              <li>Background
+              <select name="background" id="backgroundSelect">
+                <option value="#0099FF">Blue</option>
+                <option value="#32CD32">Lime Green</option>
+                <option value="#7FFFD4">Aquamarine</option>
+                <option value="#808080">Gray</option>
+                <option value="#B0C4DE" selected="selected">Light Steel Blue</option>
+                <option value="#EBECE4">Light Gray</option>
+                <option value="#F5DEB3">Tan</option>
+                <option value="#FF0000">Red</option>
+                <option value="#FFA500">Orange</option>
+                <option value="#FFCC00">Yellow</option>
+                <option value="#FFD700">Gold</option>
+                <option value="#FFFFFF">White</option>
+              </select></li>
 
-          <article>
+              <li>
+                <input id="listRandom" value="Preselected Random Colors"
+                       type="button" />
+                <input id="expRandom" value="Experimental Random Colors"
+                       type="button" />
+              </li>
+              <li>
+                <input id="resetButton" value="Reset to Default" type="button" />
+              </li>
+            </ul>
+          </fieldset>
+        </form>
+
+        <section>
           Preselected Random Colors randomly picks colors from the
           list of options in the drop-down menu.
           Experimental Random Colors can pick any of the 255<sup>3</sup>
           possible colors - Take your pick!
-          </article>
-
-        </div><!--"mainText-->
-        <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="myProjects.html">My Projects</a></li>
-          <li><a href="myClasses.html">My Classes</a></li>
-          <li><a href="workExperience.html">Work Experience</a></li>
-          <li><a href="contactInfo.html">Contact Information</a></li>
-          <li><a href="cochlearImplants.html">Cochlear Implants</a></li>
-          <li id="currentPage">Color Scheme</li>
-        </ul>
-        </nav>
-      </div><!--"main"-->
-    </div><!--"wrap"-->
-    <footer><small>&copy; 2010 Rahul Rajagopalan</small></footer>
+        </section>
+      </div>
+    </article>
   </body>
 </html>
