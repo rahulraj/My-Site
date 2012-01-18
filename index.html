@@ -1,14 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-    <title> Rahul Rajagopalan's Site - Home </title>
-    <link rel="stylesheet" type="text/css" href="firstStyle.css">
-    <link rel="stylesheet" type="text/css" href="jsStyle.css">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title>Rahul Rajagopalan | Home</title>
+    <link href="http://fonts.googleapis.com/css?family=Duru+Sans"
+          rel="stylesheet" type="text/css" /> 
+    <link href="http://fonts.googleapis.com/css?family=Metrophobic"
+          rel="stylesheet" type="text/css" /> 
+    <link rel="stylesheet" type="text/css" href="style/reset.css" />
+    <link rel="stylesheet" type="text/css" href="style/text.css" />
+    <link rel="stylesheet" type="text/css" href="style/fluid_grid.css" />
+    <link rel="stylesheet" type="text/css" href="style/firstStyle.css" />
+    <link rel="stylesheet" type="text/css" href="style/jsStyle.css" />
     <script type="text/javascript" src="jquery.js"></script>
     <script type="text/javascript" src="jquery.cookie.js"></script>
     <script type="text/javascript" src="jquery.color.js"></script>
-    <script type="text/javascript" src="colors.js"></script>
     <script type="text/javascript" src="highlightNav.js"></script>
     <script type="text/javascript" src="showHide.js"></script>
     <script type="text/javascript" src="out/goog/base.js"></script>
@@ -26,40 +32,31 @@
     <![endif]-->
   </head>
   <body>
-    <div id="wrap"> 
-      <header>
-      <img alt="MIT logo" src="mit_logo_shrunk.png"><h1>Rahul Rajagopalan</h1>
-      </header>
-      <div id="main">
-        <div id="mainText">
-          <h2> Home </h2>
-          <p>
+    <header>
+      <h1>Rahul Rajagopalan</h1>
+      <nav>
+        <span id="currentPage">Home</a> | 
+        <a href="myProjects.html">Projects</a> | 
+        <a href="myClasses.html">Classes</a> | 
+        <a href="workExperience.html">Work Experience</a> | 
+        <a href="contactInfo.html">Contact</a> | 
+        <a href="cochlearImplants.html">Cochlear Implants</a> | 
+        <a href="colorScheme.html">Colors</a>
+      </nav>
+    </header>
+    <h2 class="container_12">Home</h2>
+    <div class="clear"></div>
+    <div class="container_12">
+      <div class="grid_4">
+        <img alt="A picture of me" src="rasmaller.jpg" />
+      </div>
+      <div id="mainText" class="grid_8">
+        <p>
           I am a junior at MIT majoring in Course 6-3, Computer Science 
           and Engineering. 
-          </p>
-
-          <img alt="A picture of me" src="rasmaller.jpg">
-
-          <p>
-          Thanks for visiting!
-          </p>
-
-        </div> <!--"mainText"-->
-
-        <nav>
-        <ul>
-          <li id="currentPage">Home</li>
-          <li><a href="myProjects.html">My Projects</a></li>
-          <li><a href="myClasses.html">My Classes</a></li>
-          <li><a href="workExperience.html">Work Experience</a></li>
-          <li><a href="contactInfo.html">Contact Information</a></li>
-          <li><a href="cochlearImplants.html">Cochlear Implants</a><li>
-          <li id="colorScheme"><a href="colorScheme.html">Color Scheme</a></li>
-        </ul>
-        </nav>
-      </div><!--"main"-->
-    </div><!--"wrap"-->
-
-    <footer><small>&copy; 2010 Rahul Rajagopalan</small></footer>
+        </p>
+      </div> <!--"mainText"-->
+      <div class="clear"></div>
+    </div>
   </body>
 </html> 
