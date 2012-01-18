@@ -108,13 +108,20 @@
         history-data (js-map {:href current-href})]
     (.pushState js/history history-data current-href new-href)))
 
+(defn update-subtitle-to
+  "Page titles are of the format 'Rahul Rajagopalan | Home'.
+   Update the part after the | to the given value."
+  [new-subtitle]
+  (.html (js/jQuery "title") (str "Rahul Rajagopalan | " new-subtitle)))
+
 (defn on-anchor-click
   "Called on click of an anchor (the anchor is passed in)"
   [anchor]
   (doto anchor
     (load-content)
     (restyle-anchors)
-    (update-history)))
+    (update-history))
+  (update-subtitle-to (macros/object-call anchor html)))
 
 (defn on-pop-state
   "Called when the popstate event occurs. Updates the page to the
@@ -122,7 +129,8 @@
   [to-href]
   (doto to-href
     (load-from-page)
-    (restyle-anchors-for-page)))
+    (restyle-anchors-for-page))
+  (update-subtitle-to (href-to-name to-href)))
 
 (defn ^:export main
   "Entry point for the Clojurescript, to be called on load"
