@@ -10,16 +10,26 @@
 
 (defn js-map
   "Provided at https://gist.github.com/1098417
-   makes a javascript map from a clojure one"
-  [cljmap]
+   makes a javascript map from a clojure one
+  
+   Args:
+     clojure-map the Clojure map (usually written as a {:key :value} literal."
+  [clojure-map]
   (let [out (js-obj)]
-    (doall (map #(aset out (name (first %)) (second %)) cljmap))
+    (doall (map #(aset out (name (first %)) (second %)) clojure-map))
     out))
 
 (defn main-text-from-load-container
   "Extract the contents of the #mainText div from the container
    it was loaded in. Removes the outer <div> tags (so they're
-   not duplicated)."
+   not duplicated).
+  
+   Args:
+     container the JQuery object element with the new content.
+         It has 2 layers of <div> nesting after .load was called earlier.
+  
+   Returns:
+     The HTML inside container."
   [container]
   (-> container
     (.find main-text-id)
@@ -28,7 +38,10 @@
 (defn load-from-page 
   "Given the name of a page (like index.html), loads the #mainText
    from that page, and puts that in the #mainText of the current
-   page."
+   page.
+  
+   Args:
+     page-name the name of the page."
   [page-name]
   (let [to-load (str page-name " " main-text-id)
         load-container (js/jQuery "<span>")
@@ -41,7 +54,10 @@
 
 (defn load-content
   "Load the main text referred to by the anchor that the user clicked.
-   Updates the #mainText div asynchronously."
+   Updates the #mainText div asynchronously.
+  
+   Args:
+     anchor the anchor element (as a JQuery object) that was clicked."
   [anchor]
   (load-from-page (.attr anchor "href")))
 
@@ -68,7 +84,13 @@
   (into {} (for [[a-key a-value] name-to-href] [a-value a-key])))
 
 (defn anchor-with-href
-  "Find the a with the link to the given href."
+  "Find the a with the link to the given href.
+  
+   Args:
+     to-match a string href.
+  
+   Returns:
+     The anchor in nav with that href, as a JQuery object."
   [to-match]
   (.filter (.find (js/jQuery "nav") "a") (fn []
     (let [anchor (js/jQuery (js* "this"))]
@@ -77,7 +99,10 @@
 (defn restyle-anchors-for-page 
   "Restyle the anchors after a page change. Takes
    the href of the destination page - this anchor
-   should be unlinkified while the rest are linkified."
+   should be unlinkified while the rest are linkified.
+  
+   Args:
+     destination-page-href the href of the newly loaded page."
   [destination-page-href]
   (let [current-page-element (js/jQuery "#currentPage")
         current-page-name (macros/object-call current-page-element html)
@@ -95,13 +120,19 @@
   "On any given page, the current page in the nav area
    should be bolded and not an anchor, while the remaining
    items in nav are anchors. When a new page is loaded, this
-   function updates the nav anchors to reflect this."
+   function updates the nav anchors to reflect this.
+  
+   Args:
+     clicked-anchor the JQuery-wrapped anchor that was clicked by the user."
   [clicked-anchor]
   (restyle-anchors-for-page (.attr clicked-anchor "href")))
 
 (defn update-history
   "Update the history so the URL is still valid,
-   given the clicked anchor (which is now Ajaxy)."
+   given the clicked anchor (which is now Ajaxy).
+  
+   Args:
+     clicked-anchor the JQuery-wrapped anchor that the user clicked."
   [clicked-anchor]
   (let [new-href (.attr clicked-anchor "href")
         current-href (current-page-relative-href)
@@ -110,12 +141,18 @@
 
 (defn update-subtitle-to
   "Page titles are of the format 'Rahul Rajagopalan | Home'.
-   Update the part after the | to the given value."
+   Update the part after the | to the given value.
+  
+   Args:
+     new-subtitle the new string value for the subtitle."
   [new-subtitle]
   (.html (js/jQuery "title") (str "Rahul Rajagopalan | " new-subtitle)))
 
 (defn on-anchor-click
-  "Called on click of an anchor (the anchor is passed in)"
+  "Called on click of an anchor (the anchor is passed in)
+  
+   Args:
+     anchor the anchor (wrapped in JQuery) that was clicked."
   [anchor]
   (doto anchor
     (load-content)
@@ -125,7 +162,11 @@
 
 (defn on-pop-state
   "Called when the popstate event occurs. Updates the page to the
-   new URL (the URL, relative to the page root, is passed in)."
+   new URL (the URL, relative to the page root, is passed in).
+  
+   Args:
+     to-href the href of the destination page. This page should be displayed
+         after the state is fully popped."
   [to-href]
   (doto to-href
     (load-from-page)
