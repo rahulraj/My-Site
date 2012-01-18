@@ -57,12 +57,12 @@
     (last parts)))
 
 (def name-to-href {"Home" "index.html"
-                   "Projects" "myProjects.html"
-                   "Classes" "myClasses.html"
+                   "Projects" "projects.html"
+                   "Classes" "classes.html"
                    "Work Experience" "workExperience.html"
-                   "Contact" "contactInfo.html"
+                   "Contact" "contact.html"
                    "Cochlear Implants" "cochlearImplants.html"
-                   "Colors" "colorScheme.html"})
+                   "Colors" "colors.html"})
 
 (def href-to-name
   (into {} (for [[a-key a-value] name-to-href] [a-value a-key])))
