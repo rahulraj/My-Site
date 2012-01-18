@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-    <title> Rahul Rajagopalan's Site - Cochlear Implants </title>
-    <link rel="stylesheet" type="text/css" href="firstStyle.css">
-    <link rel="stylesheet" type="text/css" href="jsStyle.css">
-    <script type="text/javascript" src="jquery.js"></script>
-    <script type="text/javascript" src="jquery.cookie.js"></script>
-    <script type="text/javascript" src="jquery.color.js"></script>
-    <script type="text/javascript" src="highlightNav.js"></script>
-    <script type="text/javascript" src="showHide.js"></script>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title>Rahul Rajagopalan | Cochlear Implants</title>
+    <link href="http://fonts.googleapis.com/css?family=Duru+Sans"
+          rel="stylesheet" type="text/css" /> 
+    <link href="http://fonts.googleapis.com/css?family=Metrophobic"
+          rel="stylesheet" type="text/css" /> 
+    <link rel="stylesheet" type="text/css" href="style/reset.css" />
+    <link rel="stylesheet" type="text/css" href="style/text.css" />
+    <link rel="stylesheet" type="text/css" href="style/fluid_grid.css" />
+    <link rel="stylesheet" type="text/css" href="style/firstStyle.css" />
+    <link rel="stylesheet" type="text/css" href="style/jsStyle.css" />
+    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <script type="text/javascript" src="scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="scripts/jquery.color.js"></script>
+    <script type="text/javascript" src="scripts/highlightNav.js"></script>
+    <script type="text/javascript" src="scripts/showHide.js"></script>
     <script type="text/javascript" src="out/goog/base.js"></script>
-    <script type="text/javascript" src="ajaxify.js"></script>
-    <script type="text/javascript" src="callAjaxify.js"></script>
+    <script type="text/javascript" src="scripts/ajaxify.js"></script>
+    <script type="text/javascript" src="scripts/callAjaxify.js"></script>
     <!--Javascript black magic that makes IE standards-compliant!-->
     <!--[if lt IE 9]>
     <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
@@ -25,41 +32,33 @@
     <![endif]-->
   </head>
   <body>
-    <div id="wrap">
-      <header>
-      <img alt="MIT logo" src="mit_logo_shrunk.png"><h1>Rahul Rajagopalan</h1>
-      </header>
-      <div id="main">
-        <div id="mainText">
-          <h2>Cochlear Implants</h2>
-          <article>
-          <p>Some interesting links about cochlear implants:</p>
-          <ul>
-            <li><a href="http://agbell.org/NetCommunity/Page.aspx?pid=730">
-              AG Bell's list of frequently asked questions</a></li>
-            <li><a href="http://en.wikipedia.org/wiki/Cochlear_implant">
-              The Wikipedia article</a></li>
-            <li><a href="http://tinyurl.com/28jpj5g">
-              Interesting article about Graeme Clark and the invention of
-              the CI</a></li>
-          </ul>
-          </article>
+    <header>
+      <h1>Rahul Rajagopalan</h1>
+      <nav>
+        <a href="index.html">Home</a> | 
+        <a href="myProjects.html">Projects</a> | 
+        <a href="myClasses.html">Classes</a> | 
+        <a href="workExperience.html">Work Experience</a> | 
+        <a href="contactInfo.html">Contact</a> | 
+        <span id="currentPage">Cochlear Implants</span> | 
+        <a href="colorScheme.html">Colors</a>
+      </nav>
+    </header>
 
-        </div> <!--"mainText-->
-
-        <nav>
+    <h2>Cochlear Implants</h2>
+    <article class="container_12">
+      <div class="grid_12">
+        <p>Some interesting links about cochlear implants:</p>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="myProjects.html">My Projects</a></li>
-          <li><a href="myClasses.html">My Classes</a></li>
-          <li><a href="workExperience.html">Work Experience</a></li>
-          <li><a href="contactInfo.html">Contact Information</a></li>
-          <li id="currentPage">Cochlear Implants</li>
-          <li><a href="colorScheme.html">Color Scheme</a></li>
+          <li><a href="http://agbell.org/NetCommunity/Page.aspx?pid=730">
+            AG Bell's list of frequently asked questions</a></li>
+          <li><a href="http://en.wikipedia.org/wiki/Cochlear_implant">
+            The Wikipedia article</a></li>
+          <li><a href="http://tinyurl.com/28jpj5g">
+            Interesting article about Graeme Clark and the invention of
+            the CI</a></li>
         </ul>
-        </nav>
-      </div><!--"main"-->
-    </div><!--"wrap"-->
-    <footer><small>&copy; 2010 Rahul Rajagopalan</small></footer>
+      </div>
+    </article>
   </body>
 </html>
