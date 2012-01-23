@@ -1,5 +1,13 @@
 $(function() {
 
+  var supportsHtml5Storage = function() {
+    try {
+      return 'localStorage' in window && window['localStorage'] !== null;
+    } catch (error) {
+      return false;
+    }
+  };
+
   var mainTextDiv = $('#mainText');
 
   // read the options for the selects into an array to use for
