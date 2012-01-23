@@ -118,7 +118,7 @@ $(function() {
     save();
   });
 
-  mainTextDiv.on('click', '#expRandom', function() {
+  mainTextDiv.on('click', '#experimentalRandom', function() {
     var randomRgbValue = function() {
       // FF in hex:
       var maximumValue = 255;
