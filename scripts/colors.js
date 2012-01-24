@@ -39,6 +39,30 @@ site.CookieStorage.prototype.clear = function() {
   $.cookie('color2', null);
 };
 
+site.Html5Storage = function() {};
+
+site.Html5Storage.prototype.save = function(colorSet) {
+  try {
+    localStorage['color'] = colorSet.asJson();
+    return true;
+  } catch (quotaExceededError) {
+    // unlikely, but good practice to handle
+    return false;
+  }
+};
+
+site.Html5Storage.prototype.load = function() {
+  var stored = localStorage['color'];
+  if (!stored) {
+    return null;
+  }
+  return site.ColorSet.fromJson(stored);
+};
+
+site.Html5Storage.prototype.clear = function() {
+  localStorage.removeItem('color');
+};
+
 site.ColorChanger = function(argumentMap) {
   this.headerSelect = argumentMap.headerSelect;
   this.bodySelect = argumentMap.bodySelect;
@@ -194,7 +218,11 @@ $(function() {
     selectOptions[index] = $(selected).val();
   });
 
-  var storage = new site.CookieStorage();
+  // Data saved via HTML5 storage is not sent to the server with requests.
+  // It doesn't need to be in this case. If it's available, use it instead
+  // of cookies.
+  var storage = supportsHtml5Storage() ?
+      new site.Html5Storage() : new site.CookieStorage();
 
   var colorChanger = new site.ColorChanger({
       headerSelect: $('#headerSelect'),
