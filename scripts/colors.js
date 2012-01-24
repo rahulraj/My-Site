@@ -43,7 +43,7 @@ site.Html5Storage = function() {};
 
 site.Html5Storage.prototype.save = function(colorSet) {
   try {
-    localStorage['color'] = colorSet.asJson();
+    localStorage.color = colorSet.asJson();
     return true;
   } catch (quotaExceededError) {
     // unlikely, but good practice to handle
@@ -52,7 +52,7 @@ site.Html5Storage.prototype.save = function(colorSet) {
 };
 
 site.Html5Storage.prototype.load = function() {
-  var stored = localStorage['color'];
+  var stored = localStorage.color;
   if (!stored) {
     return null;
   }
@@ -60,7 +60,7 @@ site.Html5Storage.prototype.load = function() {
 };
 
 site.Html5Storage.prototype.clear = function() {
-  localStorage.removeItem('color');
+  delete localStorage.color;
 };
 
 site.ColorChanger = function(argumentMap) {
