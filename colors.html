@@ -45,7 +45,7 @@
             <fieldset>
               <legend>Play with the colors!</legend>
               <ul>
-                <li>
+                <li class="colorSelect">
                   Header
                   <select name="headerSelect" id="headerSelect">
                     <option value="#FFC373" selected="selected">Orange</option>
@@ -65,7 +65,7 @@
                   </select>
                 </li>
 
-                <li>
+                <li class="colorSelect">
                   Body
                   <select name="bodySelect" id="bodySelect">
                     <option value="#FFC373">Orange</option>
@@ -85,14 +85,14 @@
                   </select>
                 </li>
 
-                <li>
+                <li id="randomButtons">
                   <input id="listRandom" value="Preselected Random Colors"
                          type="button" />
                   <input id="experimentalRandom"
                          value="Experimental Random Colors" type="button" />
                 </li>
                 <li>
-                  <input id="resetButton" value="Reset to Default" type="button" />
+                  <input id="resetButton" value="Reset" type="button" />
                 </li>
               </ul>
             </fieldset>

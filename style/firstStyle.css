@@ -1,13 +1,3 @@
-/*
- * Colors:
- * Floridan Chill from Kuler
- * #8BA8AD - Light greenish blue.
- * #EBFAFF - Off-white
- * #7C8A4C - Light Green
- * #737000 - Dark Green
- * #C28923 - Tan Orange
- */ 
-
 html, body {
   background-color: #F0FFF0;
   font-family: "Metrophobic", "Times New Roman", Georgia, serif;
@@ -56,4 +46,23 @@ ul {
 }
 #currentPage {
   font-weight: bold;
+}
+legend {
+  padding-bottom: 25px;
+}
+form li {
+  margin-left: 0px; /* override text.css */
+}
+.colorSelect {
+  padding-bottom: 5px;
+}
+.colorSelect select {
+  display: block;
+}
+#randomButtons {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#randomButtons input {
+  margin-right: 10px;
 }
