@@ -221,17 +221,16 @@ nav {
 img[src="rasmaller.jpg"] {
   display: block;
 }
+h1, h2, h3 {
+  font-family: "Droid Serif", Georgia, "Times New Roman", serif;
+}
 h1 {
-  font-family: "Arvo", "Droid Serif", Georgia, "Times New Roman", serif;
   font-size: 35px;
   padding-top: 10px;
   padding-bottom: 25px;
 }
 h1, h2 {
   text-align: center;
-}
-h2, h3 {
-  font-family: "Droid Serif", Georgia, "Times New Roman", serif;
 }
 h2 {
   font-size: 25px;
