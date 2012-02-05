@@ -191,7 +191,6 @@ svg {
 }
 html, body {
   background-color: #f0fff0;
-  font-family: "Metrophobic", "Times New Roman", Georgia, serif;
 }
 header {
   background-color: #ffc373;
@@ -202,14 +201,15 @@ header {
   padding-bottom: 20px;
 }
 nav {
+  font-family: "Droid Sans", "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif;
   text-align: center;
   font-size: 18px;
   width: 100%;
 }
 #mainText p, #mainText li, #mainText legend {
-  font-family: "Metrophobic", "Times New Roman", Georgia, serif;
+  font-family: "Droid Sans", "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif;
   font-size: 18px;
-  line-height: 20px;
+  line-height: 24px;
 }
 #mainText p {
   padding-bottom: 25px;
@@ -221,10 +221,8 @@ nav {
 img[src="rasmaller.jpg"] {
   display: block;
 }
-h1, h2, h3 {
-  font-family: "Duru Sans", "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif;
-}
 h1 {
+  font-family: "Arvo", "Droid Serif", Georgia, "Times New Roman", serif;
   font-size: 35px;
   padding-top: 10px;
   padding-bottom: 25px;
@@ -232,30 +230,28 @@ h1 {
 h1, h2 {
   text-align: center;
 }
+h2, h3 {
+  font-family: "Droid Serif", Georgia, "Times New Roman", serif;
+}
 h2 {
   font-size: 25px;
   padding-top: 15px;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
 }
 h3 {
-  font-size: 19px;
+  font-size: 20px;
   border-top-style: dashed;
   border-top-width: 1px;
-  padding-top: 15px;
-  margin-bottom: 5px;
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
 ul {
   list-style-type: none;
   margin: 0px;
+  padding-bottom: 25px;
 }
 #currentPage {
   font-weight: bold;
-}
-section {
-  padding-bottom: 10px;
-}
-section ul {
-  padding-bottom: 10px;
 }
 #colorFormDescription {
   padding-bottom: 25px;
