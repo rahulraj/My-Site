@@ -5,6 +5,12 @@ site.ColorSet = function(headerHex, bodyHex) {
   // for a specified color scheme
   this.headerHex = headerHex;
   this.bodyHex = bodyHex;
+
+  Object.defineProperty(this, 'asJson', {
+      get: function() {
+        return JSON.stringify(this);
+      }
+  });
 };
 
 site.ColorSet.fromJson = function(jsonString) {
@@ -16,47 +22,47 @@ site.ColorSet.default = function() {
   return new site.ColorSet('#FFC373', '#F0FFF0');
 };
 
-site.ColorSet.prototype.asJson = function() {
-  return JSON.stringify(this);
+site.CookieStorage = function() {
+  Object.defineProperty(this, 'value', {
+      get: function() {
+        if (!$.cookie('color2')) {
+          return null;
+        }
+        return site.ColorSet.fromJson($.cookie('color2'));
+      }
+  });
 };
-
-site.CookieStorage = function() {};
 
 site.CookieStorage.prototype.save = function(colorSet) {
-  $.cookie('color2', colorSet.asJson(), {expires: 7});
+  $.cookie('color2', colorSet.asJson, {expires: 7});
   // return true if saving the cookie was successful
   return !!($.cookie('color2'));
-};
-
-site.CookieStorage.prototype.load = function() {
-  if (!$.cookie('color2')) {
-    return null;
-  }
-  return site.ColorSet.fromJson($.cookie('color2'));
 };
 
 site.CookieStorage.prototype.clear = function() {
   $.cookie('color2', null);
 };
 
-site.Html5Storage = function() {};
+site.Html5Storage = function() {
+  Object.defineProperty(this, 'value', {
+      get: function() {
+        var stored = localStorage.color;
+        if (!stored) {
+          return null;
+        }
+        return site.ColorSet.fromJson(stored);
+      }
+  });
+};
 
 site.Html5Storage.prototype.save = function(colorSet) {
   try {
-    localStorage.color = colorSet.asJson();
+    localStorage.color = colorSet.asJson;
     return true;
   } catch (quotaExceededError) {
     // unlikely, but good practice to handle
     return false;
   }
-};
-
-site.Html5Storage.prototype.load = function() {
-  var stored = localStorage.color;
-  if (!stored) {
-    return null;
-  }
-  return site.ColorSet.fromJson(stored);
 };
 
 site.Html5Storage.prototype.clear = function() {
@@ -76,6 +82,38 @@ site.ColorChanger = function(argumentMap) {
   this.body = argumentMap.body;
   this.message = argumentMap.message;
   this.storage = argumentMap.storage;
+
+  this.initializeProperties();
+};
+
+site.ColorChanger.prototype.initializeProperties = function() {
+  Object.defineProperty(this, 'selectOptions', {
+    get: function() {
+      var selectOptions = [];
+      $(this.headerSelectSelector + ' > option').each(function(index, selected) {
+        selectOptions[index] = $(selected).val();
+      });
+      return selectOptions;
+    }
+  });
+
+  Object.defineProperty(this, 'headerSelectValue', {
+      get: function() {
+        return $(this.headerSelectSelector).val();
+      },
+      set: function(value) {
+        $(this.headerSelectSelector).val(value);
+      }
+  });
+
+  Object.defineProperty(this, 'bodySelectValue', {
+      get: function() {
+        return $(this.bodySelectSelector).val();
+      },
+      set: function(value) {
+        $(this.bodySelectSelector).val(value);
+      }
+  });
 };
 
 // changes the background-color of the given jQuery object to color
@@ -114,31 +152,6 @@ site.newColorHex = function() {
   return '#' + red + green + blue;
 };
 
-site.ColorChanger.prototype.selectOptions = function() {
-  var selectOptions = [];
-  $(this.headerSelectSelector + ' > option').each(function(index, selected) {
-    selectOptions[index] = $(selected).val();
-  });
-  return selectOptions;
-};
-
-// TODO use properties instead of getters/setters
-site.ColorChanger.prototype.headerSelectValue = function() {
-  return $(this.headerSelectSelector).val();
-};
-
-site.ColorChanger.prototype.setHeaderSelectValue = function(value) {
-  $(this.headerSelectSelector).val(value);
-};
-
-site.ColorChanger.prototype.bodySelectValue = function() {
-  return $(this.bodySelectSelector).val();
-};
-
-site.ColorChanger.prototype.setBodySelectValue = function(value) {
-  $(this.bodySelectSelector).val(value);
-};
-
 // event that is called when one of the selects changes. 
 // The elements specified by selector animate a color
 // change to color, and the cookie is updated
@@ -149,36 +162,33 @@ site.ColorChanger.prototype.onSelectChange = function(object, color) {
 };
 
 site.ColorChanger.prototype.bindEvents = function() {
-  var changer = this;
-  this.body.on('change', this.headerSelectSelector, function() {
-    changer.onSelectChange(changer.header,
-        changer.headerSelectValue());
-  });
+  this.body.on('change', this.headerSelectSelector, (function() {
+    this.onSelectChange(this.header, this.headerSelectValue);
+  }).bind(this));
 
-  this.body.on('change', this.bodySelectSelector, function() {
-    changer.onSelectChange(changer.body,
-        changer.bodySelectValue());
-  });
+  this.body.on('change', this.bodySelectSelector, (function() {
+    this.onSelectChange(this.body, this.bodySelectValue);
+  }).bind(this));
 
-  this.body.on('click', this.resetButtonSelector, function() {
-    changer.setColors(site.ColorSet.default(), {animate: true});
-    changer.storage.clear();
-  });
+  this.body.on('click', this.resetButtonSelector, (function() {
+    this.setColors(site.ColorSet.default(), {animate: true});
+    this.storage.clear();
+  }).bind(this));
 
-  this.body.on('click', this.listRandomSelector, function() {
+  this.body.on('click', this.listRandomSelector, (function() {
     var randomColors = []; 
-    var selectOptions = changer.selectOptions();
+    var selectOptions = this.selectOptions;
     var numberOfOptions = selectOptions.length;
     for (var i = 0; i < numberOfOptions; i++) {
       randomColors[i] = selectOptions[
           site.randomNumber(numberOfOptions)];
     }
     var randomColorSet = new site.ColorSet(randomColors[0], randomColors[1]);
-    changer.setColors(randomColorSet, {animate: true});
-    changer.save();
-  });
+    this.setColors(randomColorSet, {animate: true});
+    this.save();
+  }).bind(this));
 
-  this.body.on('click', this.experimentalRandomSelector, function() {
+  this.body.on('click', this.experimentalRandomSelector, (function() {
     var newColors = [];
     $('select').each(function(index) {
       var color = site.newColorHex().toUpperCase();
@@ -188,10 +198,10 @@ site.ColorChanger.prototype.bindEvents = function() {
       $(this).append(newColorOption).val(color);
       newColors[index] = color;
     });
-    changer.setColors(new site.ColorSet(newColors[0], newColors[1]),
+    this.setColors(new site.ColorSet(newColors[0], newColors[1]),
         {animate: true});
-    changer.save();
-  });
+    this.save();
+  }).bind(this));
 };
 
 site.ColorChanger.prototype.tellUser = function(toReport) {
@@ -204,8 +214,8 @@ site.ColorChanger.prototype.tellUser = function(toReport) {
 };
 
 site.ColorChanger.prototype.save = function() {
-  var newColors = new site.ColorSet(this.headerSelectValue(),
-      this.bodySelectValue());
+  var newColors = new site.ColorSet(this.headerSelectValue,
+      this.bodySelectValue);
   var succeeded = this.storage.save(newColors);
   if (!succeeded) {
     var message = "You haven't enabled cookies for this site. This script " +
@@ -219,8 +229,8 @@ site.ColorChanger.prototype.setColors = function(colorSet, shouldAnimateMap) {
   // specified by colorSet, animates if shouldAnimate is
   // true, else just changes the colors
   var shouldAnimate = shouldAnimateMap.animate;
-  this.setHeaderSelectValue(colorSet.headerHex);
-  this.setBodySelectValue(colorSet.bodyHex);
+  this.headerSelectValue = colorSet.headerHex;
+  this.bodySelectValue = colorSet.bodyHex;
 
   var colorFunction = shouldAnimate ? site.animateColor : site.changeColor;
 
@@ -229,7 +239,7 @@ site.ColorChanger.prototype.setColors = function(colorSet, shouldAnimateMap) {
 };
 
 site.ColorChanger.prototype.loadColors = function() {
-  var maybeColorSet = this.storage.load(); 
+  var maybeColorSet = this.storage.value;
   var colorsToUse = maybeColorSet || site.ColorSet.default();
   this.setColors(colorsToUse, {animate: false});
 };
