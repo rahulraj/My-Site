@@ -64,12 +64,17 @@ site.Html5Storage.prototype.clear = function() {
 };
 
 site.ColorChanger = function(argumentMap) {
-  this.headerSelect = argumentMap.headerSelect;
-  this.bodySelect = argumentMap.bodySelect;
+  // A string that can be passed to jQuery to retrieve the headerSelect
+  // needed because the actual select object may not be available when
+  // this constructor is called (so we defer retrieving it).
+  this.headerSelectSelector = argumentMap.headerSelectSelector;
+  this.bodySelectSelector = argumentMap.bodySelectSelector;
+  this.listRandomSelector = argumentMap.listRandomSelector;
+  this.experimentalRandomSelector = argumentMap.experimentalRandomSelector;
+  this.resetButtonSelector = argumentMap.resetButtonSelector;
   this.header = argumentMap.header;
   this.body = argumentMap.body;
   this.message = argumentMap.message;
-  this.selectOptions = argumentMap.selectOptions;
   this.storage = argumentMap.storage;
 };
 
@@ -109,6 +114,31 @@ site.newColorHex = function() {
   return '#' + red + green + blue;
 };
 
+site.ColorChanger.prototype.selectOptions = function() {
+  var selectOptions = [];
+  $(this.headerSelectSelector + ' > option').each(function(index, selected) {
+    selectOptions[index] = $(selected).val();
+  });
+  return selectOptions;
+};
+
+// TODO use properties instead of getters/setters
+site.ColorChanger.prototype.headerSelectValue = function() {
+  return $(this.headerSelectSelector).val();
+};
+
+site.ColorChanger.prototype.setHeaderSelectValue = function(value) {
+  $(this.headerSelectSelector).val(value);
+};
+
+site.ColorChanger.prototype.bodySelectValue = function() {
+  return $(this.bodySelectSelector).val();
+};
+
+site.ColorChanger.prototype.setBodySelectValue = function(value) {
+  $(this.bodySelectSelector).val(value);
+};
+
 // event that is called when one of the selects changes. 
 // The elements specified by selector animate a color
 // change to color, and the cookie is updated
@@ -120,25 +150,27 @@ site.ColorChanger.prototype.onSelectChange = function(object, color) {
 
 site.ColorChanger.prototype.bindEvents = function() {
   var changer = this;
-  this.body.on('change', '#headerSelect', function() {
+  this.body.on('change', this.headerSelectSelector, function() {
     changer.onSelectChange(changer.header,
-        changer.headerSelect.val());
+        changer.headerSelectValue());
   });
 
-  this.body.on('change', '#bodySelect', function() {
-    changer.onSelectChange(changer.body, changer.bodySelect.val());
+  this.body.on('change', this.bodySelectSelector, function() {
+    changer.onSelectChange(changer.body,
+        changer.bodySelectValue());
   });
 
-  this.body.on('click', '#resetButton', function() {
+  this.body.on('click', this.resetButtonSelector, function() {
     changer.setColors(site.ColorSet.default(), {animate: true});
     changer.storage.clear();
   });
 
-  this.body.on('click', '#listRandom', function() {
+  this.body.on('click', this.listRandomSelector, function() {
     var randomColors = []; 
-    var numberOfOptions = changer.selectOptions.length;
+    var selectOptions = changer.selectOptions();
+    var numberOfOptions = selectOptions.length;
     for (var i = 0; i < numberOfOptions; i++) {
-      randomColors[i] = changer.selectOptions[
+      randomColors[i] = selectOptions[
           site.randomNumber(numberOfOptions)];
     }
     var randomColorSet = new site.ColorSet(randomColors[0], randomColors[1]);
@@ -146,7 +178,7 @@ site.ColorChanger.prototype.bindEvents = function() {
     changer.save();
   });
 
-  this.body.on('click', '#experimentalRandom', function() {
+  this.body.on('click', this.experimentalRandomSelector, function() {
     var newColors = [];
     $('select').each(function(index) {
       var color = site.newColorHex().toUpperCase();
@@ -172,8 +204,8 @@ site.ColorChanger.prototype.tellUser = function(toReport) {
 };
 
 site.ColorChanger.prototype.save = function() {
-  var newColors = new site.ColorSet(this.headerSelect.val(),
-      this.bodySelect.val());
+  var newColors = new site.ColorSet(this.headerSelectValue(),
+      this.bodySelectValue());
   var succeeded = this.storage.save(newColors);
   if (!succeeded) {
     var message = "You haven't enabled cookies for this site. This script " +
@@ -187,8 +219,8 @@ site.ColorChanger.prototype.setColors = function(colorSet, shouldAnimateMap) {
   // specified by colorSet, animates if shouldAnimate is
   // true, else just changes the colors
   var shouldAnimate = shouldAnimateMap.animate;
-  this.headerSelect.val(colorSet.headerHex);
-  this.bodySelect.val(colorSet.bodyHex);
+  this.setHeaderSelectValue(colorSet.headerHex);
+  this.setBodySelectValue(colorSet.bodyHex);
 
   var colorFunction = shouldAnimate ? site.animateColor : site.changeColor;
 
@@ -211,13 +243,6 @@ $(function() {
     }
   };
 
-  // read the options for the selects into an array to use for
-  // the random color button
-  var selectOptions = [];
-  $('#headerSelect > option').each(function(index, selected) {
-    selectOptions[index] = $(selected).val();
-  });
-
   // Data saved via HTML5 storage is not sent to the server with requests.
   // It doesn't need to be in this case. If it's available, use it instead
   // of cookies.
@@ -225,11 +250,13 @@ $(function() {
       new site.Html5Storage() : new site.CookieStorage();
 
   var colorChanger = new site.ColorChanger({
-      headerSelect: $('#headerSelect'),
-      bodySelect: $('#bodySelect'),
+      headerSelectSelector: '#headerSelect',
+      bodySelectSelector: '#bodySelect',
+      listRandomSelector: '#listRandom',
+      experimentalRandomSelector: '#experimentalRandom',
+      resetButtonSelector: '#resetButton',
       header: $('header'),
       body: $('#mainText'),
-      selectOptions: selectOptions,
       storage: storage
   });
 
