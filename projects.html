@@ -7,9 +7,8 @@
           rel="stylesheet" /> 
     <link href="http://fonts.googleapis.com/css?family=Metrophobic"
           rel="stylesheet" /> 
-    <link rel="stylesheet" href="style/reset.css" />
-    <link rel="stylesheet" href="style/text.css" />
-    <link rel="stylesheet" href="style/fluid_grid.css" />
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" />
     <link rel="stylesheet" href="style/firstStyle.css" />
     <script src="scripts/jquery.js"></script>
     <script src="scripts/jquery.cookie.js"></script>
@@ -26,27 +25,32 @@
   </head>
   <body>
     <header>
-      <h1>Rahul Rajagopalan</h1>
-      <nav>
-        <a href="index.html">Home</a> | 
-        <span id="currentPage">My Projects</span> | 
-        <a href="classes.html">My Classes</a> | 
-        <a href="workExperience.html">Work Experience</a> | 
-        <a href="contact.html">Contact Information</a> | 
-        <a href="cochlearImplants.html">Cochlear Implants</a> | 
-        <a href="colors.html">Color Scheme</a>
-      </nav>
+      <div class="container-fluid">
+        <h1>Rahul Rajagopalan</h1>
+        <div class="row-fluid">
+          <nav class="span12">
+            <a href="index.html">Home</a> | 
+            <span id="currentPage">My Projects</span> | 
+            <a href="classes.html">My Classes</a> | 
+            <a href="workExperience.html">Work Experience</a> | 
+            <a href="contact.html">Contact Information</a> | 
+            <a href="cochlearImplants.html">Cochlear Implants</a> | 
+            <a href="colors.html">Color Scheme</a>
+          </nav>
+        </div>
+      </div>
     </header>
     <div id="mainText">
-      <h2> My Projects </h2>
-      <article class="container_12">
-        <section class="grid_12">
-          <p>
-            Software Studio (6.170) - See 
-            <a href="https://github.com/rahulraj/6.170-Assignments">Github</a>
-          </p>
-        </section>
-        <div class="clear"></div>
+      <article class="container">
+        <h2> My Projects </h2>
+        <div class="row">
+          <section class="span12">
+            <p>
+              Software Studio (6.170) - See 
+              <a href="https://github.com/rahulraj/6.170-Assignments">Github</a>
+            </p>
+          </section>
+        </div>
       </article>
     </div>
   </body>
