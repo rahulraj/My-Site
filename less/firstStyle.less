@@ -1,12 +1,12 @@
-@import "bootstrap-responsive.min";
+@import "reset";
 
 @off-white: #F0FFF0;
 @orange: #FFC373;
 
 html, body {
   background-color: @off-white;
-  font-family: "Metrophobic", "Times New Roman", Georgia, serif;
-  font-size: 14px;
+  font-family: "Metrophobic", "Times New Roman", Georgia,
+      serif; 
 }
 header {
   background-color: @orange;
@@ -18,19 +18,33 @@ header {
 }
 nav {
   text-align: center;
-  font-size: 16px;
+  font-size: 18px;
+  width: 100%;
 }
-#mainText {
-  font-size: 16px;
+#mainText p, #mainText li, #mainText legend {
+  font-family: "Metrophobic", "Times New Roman", Georgia,
+      serif; 
+  font-size: 18px;
+  line-height: 20px;
+}
+#mainText p {
+  padding-bottom: 25px;
+}
+#mainText legend {
+  border: none;
+  margin-bottom: 0px;
 }
 img[src="rasmaller.jpg"] {
   display: block;
 }
 h1, h2, h3 {
-  font-family: "Duru Sans", Arial, Verdana, sans-serif;
+  font-family: "Duru Sans", "Helvetica Neue", Helvetica, Arial,
+      Verdana, sans-serif;
 }
 h1 {
-  font-size: 30px;
+  font-size: 35px;
+  padding-top: 10px;
+  padding-bottom: 25px;
 }
 h1, h2 {
   text-align: center;
@@ -38,9 +52,10 @@ h1, h2 {
 h2 {
   font-size: 25px;
   padding-top: 15px;
+  padding-bottom: 10px;
 }
 h3 {
-  font-size: 14px;
+  font-size: 19px;
   border-top-style: dashed;
   border-top-width: 1px;
   padding-top: 15px;
@@ -48,15 +63,28 @@ h3 {
 }
 ul {
   list-style-type: none;
+  margin: 0px;
 }
 #currentPage {
   font-weight: bold;
 }
-legend {
+section {
+  padding-bottom: 10px;
+  ul {
+    padding-bottom: 10px;
+  }
+}
+#colorFormDescription {
   padding-bottom: 25px;
 }
 form li {
   margin-left: 0px; /* override text.css */
+}
+fieldset {
+  padding-bottom: 15px;
+  p {
+    padding-bottom: 5px;
+  }
 }
 .colorSelect {
   padding-bottom: 5px;
@@ -70,6 +98,7 @@ form li {
   padding-bottom: 10px;
 
   input {
-    margin-right: 10px;
+    display: block;
+    margin-bottom: 15px;
   }    
 }
