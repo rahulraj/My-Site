@@ -6,8 +6,6 @@
 @sans-serif-fonts: "Droid Sans", "Helvetica Neue", Helvetica, Arial,
     Verdana, sans-serif;
 @serif-fonts: "Droid Serif", Georgia, "Times New Roman", serif;
-@slab-serif-then-serif: "Arvo", "Droid Serif", Georgia, "Times New Roman",
-    serif;
 
 html, body {
   background-color: @off-white;
@@ -41,17 +39,16 @@ nav {
 img[src="rasmaller.jpg"] {
   display: block;
 }
+h1, h2, h3 {
+  font-family: @serif-fonts;
+}
 h1 {
-  font-family: @slab-serif-then-serif;
   font-size: 35px;
   padding-top: 10px;
   padding-bottom: 25px;
 }
 h1, h2 {
   text-align: center;
-}
-h2, h3 {
-  font-family: @serif-fonts;
 }
 h2 {
   font-size: 25px;
