@@ -1,7 +1,7 @@
 $(function() {
-  var toggleVisibility = $('section').find('h3').find('a');
+  var mainTextDiv = $('#mainText');
 
-  toggleVisibility.on('click', function(event) {
+  mainTextDiv.on('click', 'h3 a', function(event) {
     event.preventDefault();
     event.stopPropagation();
     // find the content whose visibility will be toggled
