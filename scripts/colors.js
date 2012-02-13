@@ -30,15 +30,16 @@ Object.defineProperty(site.CookieStorage.prototype, 'value', {
         return null;
       }
       return site.ColorSet.fromJson($.cookie('color2'));
+    },
+
+    set: function(colorSet) {
+      $.cookie('color2', colorSet.asJson, {expires: 7});
+      // return true if saving the cookie was successful
+      if (!($.cookie('color2'))) {
+        throw new Error('Failed saving the color as a cookie.');
+      }
     }
 });
-
-
-site.CookieStorage.prototype.save = function(colorSet) {
-  $.cookie('color2', colorSet.asJson, {expires: 7});
-  // return true if saving the cookie was successful
-  return !!($.cookie('color2'));
-};
 
 site.CookieStorage.prototype.clear = function() {
   $.cookie('color2', null);
@@ -53,18 +54,13 @@ Object.defineProperty(site.Html5Storage.prototype, 'value', {
         return null;
       }
       return site.ColorSet.fromJson(stored);
+    },
+
+    set: function(colorSet) {
+      // Throws an error if the quota is exceeded.
+      localStorage.color = colorSet.asJson;
     }
 });
-
-site.Html5Storage.prototype.save = function(colorSet) {
-  try {
-    localStorage.color = colorSet.asJson;
-    return true;
-  } catch (quotaExceededError) {
-    // unlikely, but good practice to handle
-    return false;
-  }
-};
 
 site.Html5Storage.prototype.clear = function() {
   delete localStorage.color;
@@ -213,8 +209,9 @@ site.ColorChanger.prototype.tellUser = function(toReport) {
 site.ColorChanger.prototype.save = function() {
   var newColors = new site.ColorSet(this.headerSelectValue,
       this.bodySelectValue);
-  var succeeded = this.storage.save(newColors);
-  if (!succeeded) {
+  try {
+    this.storage.value = newColors;
+  } catch (storageFailedError) {
     var message = "You haven't enabled cookies for this site. This script " +
           "won't be able to save any color changes.";
     this.tellUser(message);
