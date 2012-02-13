@@ -34,7 +34,6 @@ Object.defineProperty(site.CookieStorage.prototype, 'value', {
 
     set: function(colorSet) {
       $.cookie('color2', colorSet.asJson, {expires: 7});
-      // return true if saving the cookie was successful
       if (!($.cookie('color2'))) {
         throw new Error('Failed saving the color as a cookie.');
       }
