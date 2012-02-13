@@ -5,13 +5,13 @@ site.ColorSet = function(headerHex, bodyHex) {
   // for a specified color scheme
   this.headerHex = headerHex;
   this.bodyHex = bodyHex;
-
-  Object.defineProperty(this, 'asJson', {
-      get: function() {
-        return JSON.stringify(this);
-      }
-  });
 };
+
+Object.defineProperty(site.ColorSet.prototype, 'asJson', {
+  get: function() {
+    return JSON.stringify(this);
+  }
+});
 
 site.ColorSet.fromJson = function(jsonString) {
   var result = JSON.parse(jsonString); 
@@ -22,16 +22,17 @@ site.ColorSet.default = function() {
   return new site.ColorSet('#FFC373', '#F0FFF0');
 };
 
-site.CookieStorage = function() {
-  Object.defineProperty(this, 'value', {
-      get: function() {
-        if (!$.cookie('color2')) {
-          return null;
-        }
-        return site.ColorSet.fromJson($.cookie('color2'));
+site.CookieStorage = function() {};
+
+Object.defineProperty(site.CookieStorage.prototype, 'value', {
+    get: function() {
+      if (!$.cookie('color2')) {
+        return null;
       }
-  });
-};
+      return site.ColorSet.fromJson($.cookie('color2'));
+    }
+});
+
 
 site.CookieStorage.prototype.save = function(colorSet) {
   $.cookie('color2', colorSet.asJson, {expires: 7});
@@ -43,17 +44,17 @@ site.CookieStorage.prototype.clear = function() {
   $.cookie('color2', null);
 };
 
-site.Html5Storage = function() {
-  Object.defineProperty(this, 'value', {
-      get: function() {
-        var stored = localStorage.color;
-        if (!stored) {
-          return null;
-        }
-        return site.ColorSet.fromJson(stored);
+site.Html5Storage = function() {};
+
+Object.defineProperty(site.Html5Storage.prototype, 'value', {
+    get: function() {
+      var stored = localStorage.color;
+      if (!stored) {
+        return null;
       }
-  });
-};
+      return site.ColorSet.fromJson(stored);
+    }
+});
 
 site.Html5Storage.prototype.save = function(colorSet) {
   try {
@@ -82,12 +83,9 @@ site.ColorChanger = function(argumentMap) {
   this.body = argumentMap.body;
   this.message = argumentMap.message;
   this.storage = argumentMap.storage;
-
-  this.initializeProperties();
 };
 
-site.ColorChanger.prototype.initializeProperties = function() {
-  Object.defineProperty(this, 'selectOptions', {
+Object.defineProperty(site.ColorChanger.prototype, 'selectOptions', {
     get: function() {
       var selectOptions = [];
       $(this.headerSelectSelector + ' > option').each(function(index, selected) {
@@ -95,26 +93,25 @@ site.ColorChanger.prototype.initializeProperties = function() {
       });
       return selectOptions;
     }
-  });
+});
 
-  Object.defineProperty(this, 'headerSelectValue', {
-      get: function() {
-        return $(this.headerSelectSelector).val();
-      },
-      set: function(value) {
-        $(this.headerSelectSelector).val(value);
-      }
-  });
+Object.defineProperty(site.ColorChanger.prototype, 'headerSelectValue', {
+    get: function() {
+      return $(this.headerSelectSelector).val();
+    },
+    set: function(value) {
+      $(this.headerSelectSelector).val(value);
+    }
+});
 
-  Object.defineProperty(this, 'bodySelectValue', {
-      get: function() {
-        return $(this.bodySelectSelector).val();
-      },
-      set: function(value) {
-        $(this.bodySelectSelector).val(value);
-      }
-  });
-};
+Object.defineProperty(site.ColorChanger.prototype, 'bodySelectValue', {
+    get: function() {
+      return $(this.bodySelectSelector).val();
+    },
+    set: function(value) {
+      $(this.bodySelectSelector).val(value);
+    }
+});
 
 // changes the background-color of the given jQuery object to color
 site.changeColor = function(objectToChange, color) {
