@@ -94,7 +94,8 @@ xmp {
   padding: 0;
   font-size: 100%;
 }
-html, body {
+html,
+body {
   height: 100%;
 }
 article,
@@ -118,7 +119,8 @@ section {
 
   display: block;
 }
-b, strong {
+b,
+strong {
   /*
   Makes browsers agree.
   IE + Opera = font-weight: bold.
@@ -138,7 +140,8 @@ img {
 
   -ms-interpolation-mode: bicubic;
 }
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
 li {
@@ -155,7 +158,9 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-th, td, caption {
+th,
+td,
+caption {
   font-weight: normal;
   vertical-align: top;
   text-align: left;
@@ -163,14 +168,18 @@ th, td, caption {
 q {
   quotes: none;
 }
-q:before, q:after {
+q:before,
+q:after {
   content: '';
   content: none;
 }
-sub, sup, small {
+sub,
+sup,
+small {
   font-size: 75%;
 }
-sub, sup {
+sub,
+sup {
   line-height: 0;
   position: relative;
   vertical-align: baseline;
@@ -189,14 +198,17 @@ svg {
 
   overflow: hidden;
 }
-html, body {
+html,
+body {
   background-color: #f0fff0;
 }
 header {
   background-color: #ffc373;
-  box-shadow: 0px 0px 5px #888;
-  -moz-box-shadow: 0px 0px 5px #888;
-  -webkit-box-shadow: 0px 0px 5px #888;
+  box-shadow: 0px 0px 5px #888888;
+  -moz-box-shadow: 0px 0px 5px #888888;
+  -webkit-box-shadow: 0px 0px 5px #888888;
+  -o-box-shadow: 0px 0px 5px #888888;
+  -ms-box-shadow: 0px 0px 5px #888888;
   padding-top: 5px;
   padding-bottom: 20px;
 }
@@ -206,7 +218,9 @@ nav {
   font-size: 18px;
   width: 100%;
 }
-#mainText p, #mainText li, #mainText legend {
+#mainText p,
+#mainText li,
+#mainText legend {
   font-family: "Droid Sans", "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif;
   font-size: 18px;
   line-height: 24px;
@@ -221,7 +235,9 @@ nav {
 img[src="rasmaller.jpg"] {
   display: block;
 }
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: "Droid Serif", Georgia, "Times New Roman", serif;
 }
 h1 {
@@ -229,7 +245,8 @@ h1 {
   padding-top: 10px;
   padding-bottom: 25px;
 }
-h1, h2 {
+h1,
+h2 {
   text-align: center;
 }
 h2 {
