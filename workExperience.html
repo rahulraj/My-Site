@@ -47,6 +47,41 @@
         <div class="row">
           <div class="span12">
             <section>
+
+              <h3>
+                Software Design Group UROP
+                <a href="">Hide</a>
+              </h3>
+              <p>
+                I did this UROP project under the supervision of Prof. Daniel
+                Jackson at MIT. I was involved in Rubicon, a library used
+                for static verification of Rails web apps. Rubicon uses Ruby's 
+                flexibility as a programming language to change the execution
+                model of client code to build a model to analyze.
+              </p>
+
+              <p>
+                Rubicon's attempts to redefine parts of the language were
+                stymied by the existence of built-in keywords like "if",
+                "and", and "or"; these could not be redefined like method
+                calls. I designed and implemented code to make keyword
+                redefinition possible by walking the abstract syntax tree
+                and rewriting expressions, with the help of libraries
+                including ParseTree, ruby_parser, and sexp_processor.
+              </p>
+
+              <p>
+                My project was modular enough to be extracted out into its
+                own library: virtual_keywords, available at
+                <a href="http://github.com/rahulraj/virtual_keywords">
+                  this Github repository.
+                </a>
+                virtual_keywords allows developers to redefine the behavior
+                of Ruby code that uses built-in keywords. It does not expect
+                developers to understand the intricate details of Ruby's
+                grammar.
+              </p>
+
               <h3>
                 Google Internship
                 <a href="">Hide</a>
@@ -72,7 +107,7 @@
 
               <p>
                 My contributions to JsTestDriver allowed it to provide an 
-                alternative workflow with a faster feedback loop in scenarios 
+                alternate workflow with a faster feedback loop in scenarios 
                 where cross-browser compatibility does not need to be verified.
                 (e.g. calls to libraries like jQuery which handle browser
                 differences internally)
@@ -107,9 +142,9 @@
               <p>
                 A more detailed summary of IsisWorld can be found 
                 <a href=http://mmp.mit.edu/isisworld/>here</a> and
-                its code is hosted in this
+                its code is hosted in
                 <a href=https://github.com/dasmith/IsisWorld>
-                  Repository on Github.
+                  this Github repository.
                 </a>
               </p>
             </section>

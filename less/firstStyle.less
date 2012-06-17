@@ -1,7 +1,8 @@
 @import "reset";
 
-@off-white: #F0FFF0;
-@orange: #FFC373;
+@off-white: #f0fff0;
+@orange: #ffc373;
+@lighter-orange: lighten(@orange, 10%);
 @gray: #888;
 
 @sans-serif-fonts: "Droid Sans", "Helvetica Neue", Helvetica, Arial,
@@ -16,12 +17,20 @@
   -ms-box-shadow: @shadow;
 }
 
+.linear-gradient(@from, @to) {
+  background-image: -webkit-linear-gradient(top, @from, @to);
+  background-image: -moz-linear-gradient(top, @from, @to);
+  background-image: -ms-linear-gradient(top, @from, @to);
+  background-image: -o-linear-gradient(top, @from, @to);
+}
+
 html,
 body {
-  background-color: @off-white;
+  background-image: url("../natural_paper.png");
+  background-repeat: repeat;
 }
 header {
-  background-color: @orange;
+  .linear-gradient(@orange, @lighter-orange);
   .box-shadow(0px 0px 5px @gray);
   padding-top: 5px;
   padding-bottom: 20px;
