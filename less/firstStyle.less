@@ -1,8 +1,6 @@
 @import "reset";
 
-@off-white: #f0fff0;
 @orange: #ffc373;
-@lighter-orange: lighten(@orange, 10%);
 @gray: #888;
 
 @sans-serif-fonts: "Droid Sans", "Helvetica Neue", Helvetica, Arial,
@@ -30,7 +28,7 @@ body {
   background-repeat: repeat;
 }
 header {
-  .linear-gradient(@orange, @lighter-orange);
+  .linear-gradient(@orange, lighten(@orange, 10%));
   .box-shadow(0px 0px 5px @gray);
   padding-top: 5px;
   padding-bottom: 20px;
