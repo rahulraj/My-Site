@@ -7,6 +7,10 @@
           href="http://fonts.googleapis.com/css?family=Droid+Sans" />
     <link rel="stylesheet"
           href="http://fonts.googleapis.com/css?family=Droid+Serif:700" />
+    <link rel="stylesheet"
+          href="http://fonts.googleapis.com/css?family=Lato:400,700"  />
+    <link rel="stylesheet"
+          href="http://fonts.googleapis.com/css?family=Open+Sans:400,700,600" />
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.min.css" />
     <link rel="stylesheet" href="style/firstStyle.css" />
@@ -14,7 +18,6 @@
     <script
       src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
     </script>
-    <script src="scripts/showHide.js"></script>
     <script src="out/goog/base.js"></script>
     <script src="scripts/ajaxify.js"></script>
     <script src="scripts/callAjaxify.js"></script>
@@ -47,18 +50,16 @@
 
             <section>
 
-              <h3>
-                Facebook Internship
-                <a href="">Hide</a>
-              </h3>
+              <h3 id="first-section-title">Facebook Internship</h3>
               <p>
-                This was a 12-week internship at Facebook's headquarters in
-                Menlo Park, California. I was on the Facebook Chat team, working
-                on a redesign of the Messages user interface. The new interface
-                made heavy use of JavaScript and AJAX to avoid full page
-                reloads, improving responsiveness. It displayed the page in a
-                two-column layout which allowed users to see their inbox and
-                specific conversations simultaneously.
+                This was a 12&ndash;week internship at Facebook's headquarters
+                in Menlo Park, California. I was on the Facebook Chat team,
+                working on a redesign of the Messages user interface. The new
+                interface made heavy use of JavaScript and
+                <span class="acronym">ajax</span> to avoid full page reloads,
+                improving responsiveness. It displayed the page in a
+                two&ndash;column layout which allowed users to see their inbox
+                and specific conversations simultaneously.
               </p>
 
               <p>
@@ -72,61 +73,58 @@
 
               <p>
                 I also contributed to several other features, including
-                highlighting results in full-text searches to indicate relation
-                to the query, resolving compatibility issues with legacy
-                browsers, implementing an interface to move between full-text
-                search results, and displaying useful messages to the user in
-                unusual scenarios.
+                highlighting results in full&ndash;text searches to indicate
+                relation to the query, resolving compatibility issues with
+                legacy browsers, implementing an interface to move between
+                full&ndash;text search results, and displaying useful messages to the
+                user in unusual scenarios.
               </p>
 
               <p>
-                The new interface was launched internally to Facebook employees
+                The new interface was launched to Facebook employees
                 near the start of the summer, and began rolling out to the
                 public on <time datetime="2012-08-22">August 22nd, 2012</time>.
               </p>
 
-              <p>
-                Some useful references:
-              </p>
               <ul>
                 <li>
                   <a href="http://techcrunch.com/2012/08/22/facebook-redesigns-messages-with-side-by-side-layout/">
-                    TechCrunch Article covering the launch
+                    A TechCrunch article covering the launch
                   </a>
                 </li>
                 <li>
                   <a href="http://www.youtube.com/watch?v=unEuPvA2wnM">
-                    A talk from the tech lead on the software engineering
-                    practices we used in Chat and Messages
+                    A talk from the tech lead on our software engineering
+                    practices
                   </a>
                 </li>
                 <li>
                   <a href="StoryboardingTalk.pdf">
-                    Slides from a talk I gave on my contributions (PDF)
+                    Slides from a talk I gave on my contributions
+                    (<span class="acronym">pdf</span>)
                   </a>
                 </li>
               </ul>
 
-              <h3>
-                Software Design Group UROP
-                <a href="">Hide</a>
-              </h3>
+              <h3>Software Design Group UROP</h3>
               <p>
-                I did this UROP project under the supervision of Prof. Daniel
-                Jackson at MIT. I was involved in Rubicon, a library used
-                for static verification of Rails web apps. Rubicon uses Ruby's 
-                flexibility as a programming language to change the execution
-                model of client code to build a model to analyze.
+                I did this <span class="acronym">urop</span> project under the
+                supervision of Prof. Daniel Jackson at
+                <span class="acronym">mit</span>. I was involved in Rubicon, a
+                library used for static verification of Rails web apps. Rubicon
+                uses Ruby's flexibility as a programming language to change the
+                execution model of client code to build a model to analyze.
               </p>
 
               <p>
                 Rubicon's attempts to redefine parts of the language were
-                stymied by the existence of built-in keywords like "if",
-                "and", and "or"; these could not be redefined like method
-                calls. I designed and implemented code to make keyword
-                redefinition possible by walking the abstract syntax tree
-                and rewriting expressions, with the help of libraries
-                including ParseTree, ruby_parser, and sexp_processor.
+                stymied by the existence of built-in keywords like
+                &ldquo;if&rdquo;, &ldquo;and&rdquo;, and &ldquo;or&rdquo;;
+                these could not be redefined like method calls. I designed and
+                implemented code to make keyword redefinition possible by
+                walking the abstract syntax tree and rewriting expressions,
+                with the help of libraries including ParseTree, ruby_parser,
+                and sexp_processor.
               </p>
 
               <p>
@@ -135,18 +133,15 @@
                 <a href="http://github.com/rahulraj/virtual_keywords">
                   this Github repository.
                 </a>
-                virtual_keywords allows developers to redefine the behavior
-                of Ruby code that uses built-in keywords. It does not expect
+                virtual_keywords allows developers to redefine the behavior of
+                Ruby code that uses built&ndash;in keywords. It does not expect
                 developers to understand the intricate details of Ruby's
                 grammar.
               </p>
             </section>
 
             <section>
-              <h3>
-                Google Internship
-                <a href="">Hide</a>
-              </h3>
+              <h3>Google Internship</h3>
               <p>
                 I was on the Docs Engineering Productivity team, working on 
                 JsTestDriver, a framework for running unit and
@@ -176,13 +171,10 @@
             </section>
 
             <section>
-              <h3>
-                IsisWorld UROP
-                <a href="">Hide</a>
-              </h3>
+              <h3>IsisWorld UROP</h3>
               <p>
                 IsisWorld is an open-source 3D simulator designed
-                for research in commonsense AI systems. It puts actors into a 
+                for research in commonsense <span class="acronym">ai</span> systems. It puts actors into a 
                 kitchen environment, where they are given the goal of 
                 accomplishing tasks like making toast. The challenge is in 
                 training them to perform these tasks without
@@ -211,22 +203,19 @@
             </section>
 
             <section>
-              <h3>
-                Infosys Internship
-                <a href="">Hide</a>
-              </h3>
+              <h3>Infosys Internship</h3>
               <p>
-                I developed a constraint evaluation algorithm as part of a
-                project related to Infosys's ftGEN software which
-                automatically generates test data for software systems.
-                It reads a predicate defined in a constraint-specification 
-                language and decides how to satisfy it. My
-                code sped up the software by more than an order of
-                magnitude for a class of inputs that could be
-                solved via boundary value analysis and equivalence
-                partitioning.  Without my contribution, all inputs
-                had to be processed by a genetic algorithm which could solve
-                any possible input, but was significantly slower.
+                I developed a constraint evaluation algorithm as part of
+                Infosys' ft<span class="acronym">gen</span>
+                software which automatically generates test data for software
+                systems.  It reads a predicate defined in a
+                constraint&ndash;specification language and decides how to satisfy
+                the predicate. My code sped up the software by more than an order of
+                magnitude for a class of inputs that could be solved via
+                boundary value analysis and equivalence partitioning.  Without
+                my contribution, all inputs had to be processed by a genetic
+                algorithm which could solve any possible input, but was
+                significantly slower.
               </p>
 
               <p>
@@ -242,36 +231,32 @@
             </section>
 
             <section>
-              <h3>
-                UROP Researcher in Senseable Lab
-                <a href="">Hide</a>
-              </h3>
+              <h3>Senseable Lab UROP</h3>
               <p>
-                I started the design for a data logger for the iPhone to track 
-                people's transportation methods. I also implemented a script to 
-                track usage of the MIT wi-fi network in various buildings on 
-                campus.  This script pulled information off of the 
+                I started the design for a data logger for the iPhone to track
+                people's transportation methods. I also implemented a script to
+                track usage of the <span class="acronym">mit</span> wi&ndash;fi
+                network in various buildings on campus.  This script pulled
+                information off of the
                 <a href="https://mrtg.mit.edu/mrtg/">
-                  MITnet Router Statistics website (MIT certificates needed)
+                  MITnet Router Statistics website
+                  (<span class="acronym">mit</span> certificates needed)
                 </a>
-                related to the traffic from buildings of various types, and 
+                related to the traffic from buildings of various types, and
                 saved the data to a MySQL database.
               </p>
             </section>
 
             <section>
-              <h3>
-                Intern at University of Maryland
-                <a href="">Hide</a>
-              </h3>
+              <h3>Intern at University of Maryland</h3>
               <p>
                 I developed algorithms to analyze problems in
                 classical cryptology under the mentorship of
                 <a href="http://www.cs.umd.edu/~gasarch/">
                   Dr. William Gasarch
-                </a>, a professor of Computer Science at the
+                </a>, a Computer Science professor at the
                 University of Maryland. These algorithms attempted
-                known-ciphertext attacks on texts enciphered through
+                ciphertext&ndash;only attacks on texts enciphered through
                 various means, including random polyalphabetic ciphers and
                 polygraphic ciphers with large enciphering matrices.
                 This project culminated in the development of a suite

@@ -1,10 +1,22 @@
 @import "reset";
 
 $orange: #ffc373;
-$gray: #888;
+$shadow-gray: #888;
+$body-dark-gray: #444;
+$header-dark-gray: #222;
 
-$sans-serif-fonts: "Droid Sans", "Helvetica Neue", Helvetica, Arial,
-    Verdana, sans-serif;
+$name-font-size: 2.8em;
+$page-title-font-size: 2.0em;
+$section-title-font-size: 1.6em;
+$body-text-font-size: 1.1em;
+//$name-font-size: 4.0em;
+//$page-title-font-size: 2.5em;
+//$section-title-font-size: 1.5em;
+//$body-text-font-size: 1.0em;
+
+$sans-serif-fonts: "Open Sans", "Lato", "Droid Sans", "Helvetica Neue", Helvetica,
+  Arial, Verdana, sans-serif;
+$header-font: "Algreya SC";
 $serif-fonts: "Droid Serif", Georgia, "Times New Roman", serif;
 
 @mixin box-shadow($shadow) {
@@ -24,13 +36,20 @@ $serif-fonts: "Droid Serif", Georgia, "Times New Roman", serif;
 
 html,
 body {
-  background-image: url("../natural_paper.png");
-  background-repeat: repeat;
+  //background-image: url("../natural_paper.png");
+  //background-repeat: repeat;
+  background-color: #f6f6f6;
+  //background-color: #ffe2b8;
+}
+
+body {
+  font-size: 100%;
 }
 
 header {
-  @include linear-gradient($orange, lighten($orange, 10%));
-  @include box-shadow(0px 0px 5px $gray);
+  //@include linear-gradient($orange, lighten($orange, 10%));
+  background-color: $orange;
+  @include box-shadow(0px 0px 5px $shadow-gray);
   padding-top: 5px;
   padding-bottom: 20px;
 }
@@ -38,25 +57,25 @@ header {
 nav {
   font-family: $sans-serif-fonts;
   text-align: center;
-  font-size: 18px;
+  font-size: $body-text-font-size;
   width: 100%;
 }
 
 #mainText p,
-#mainText li,
-#mainText legend {
+#mainText li {
   font-family: $sans-serif-fonts;
-  font-size: 18px;
+  font-size: $body-text-font-size;
   line-height: 24px;
+  color: $body-dark-gray;
 }
 
 #mainText p {
   padding-bottom: 25px;
 }
 
-#mainText legend {
-  border: none;
-  margin-bottom: 0px;
+.acronym {
+  font-variant: small-caps;
+  font-weight: 600;
 }
 
 img[src="rasmaller.jpg"] {
@@ -66,13 +85,31 @@ img[src="rasmaller.jpg"] {
 h1,
 h2,
 h3 {
-  font-family: $serif-fonts;
+  color: $header-dark-gray;
 }
 
 h1 {
-  font-size: 35px;
+  font-family: $header-font;
+  font-size: $name-font-size;
   padding-top: 10px;
   padding-bottom: 25px;
+  font-variant: small-caps;
+}
+
+h2 {
+  font-size: $page-title-font-size;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+#first-section-title {
+  padding-top: 0px;
+}
+
+h3 {
+  font-size: $section-title-font-size;
+  padding-top: 30px;
+  padding-bottom: 10px;
 }
 
 h1,
@@ -80,18 +117,9 @@ h2 {
   text-align: center;
 }
 
-h2 {
-  font-size: 25px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-}
-
+h2,
 h3 {
-  font-size: 20px;
-  border-top-style: dashed;
-  border-top-width: 1px;
-  padding-top: 20px;
-  padding-bottom: 10px;
+  font-family: $sans-serif-fonts;
 }
 
 ul {
@@ -102,38 +130,4 @@ ul {
 
 #currentPage {
   font-weight: bold;
-}
-
-#colorFormDescription {
-  padding-bottom: 25px;
-}
-
-form li {
-  margin-left: 0px; /* override text.css */
-}
-
-fieldset {
-  padding-bottom: 15px;
-
-  p {
-    padding-bottom: 5px;
-  }
-}
-
-.colorSelect {
-  padding-bottom: 5px;
-
-  select {
-    display: block;
-  }
-}
-
-#randomButtons {
-  padding-top: 10px;
-  padding-bottom: 10px;
-
-  input {
-    display: block;
-    margin-bottom: 15px;
-  }    
 }
